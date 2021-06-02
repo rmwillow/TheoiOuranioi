@@ -1,288 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/minty/bootstrap.min.css" />
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <link href="./assets/style.css" rel="stylesheet">
-    <title>Theoi Ouranioi</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TheoiOuranioi</title>
 </head>
-<header>
-    <!-- navbar -->
-    <nav class="navbar sticky-top navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Sticky top</a>
+
+
+<body>
+    <nav class="navbar navbar-dark bg-primary mb-3">
+        <div class="container">
+            <a href="#" class="navbar-brand">Theoi Ouranioi</a>
         </div>
     </nav>
+    <div class="container searchContainer">
+        <div class="search card card-body">
+            <h1>Get The Weather For a Location</h1>
+            <p class="lead">Enter Your Location</p>
+            <input type="text" id="searchUser" class="form-control" placeholder="Location">
+        </div>
+        <br>
+        <div id="profile"></div>
+    </div>
+    <div class="container text-center mt-2">
+        <button class="btn btn-primary" id="submit">Submit</button>
+    </div>
 
-</header>
+    <div id="content">
 
-<body onload="getLocation();">
-    <p style="color: red">*Enable location service in your device / browser to get accurate weather data</p>
-    <div class="bg-img img-responsive">
-        <div class="Container" id="parse1">
-            <div class="row">
-                <div class="col-md-12 col-sm-6"> <input style="visibility: collapse;" type="text" name="city" id="city" placeholder="Enter City Name" class="form-control"> </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 col-sm-6"> <button style="visibility: collapse;" name="getWeather" id="getWeather" onclick="parseJson()" class="btn btn-primary btn-block">Get Weather</button> </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 col-sm-6"> <button name="Search" onclick="makeVisible()" class="btn btn-primary btn-block" id="SearchVisibility">Search another city</button> </div>
-            </div>
-            <br>
-            <h2 id="nointernet"></h2>
-            <div class="board" id="blur-bg" style="visibility: collapse;">
-                <div class="row">
-                    <div class="col-md-12">
-                        <p id="last_update" style="visibility: collapse;"></p>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-1 col-sm-1">
-                            <p id="Temperature" style="font-style: bold;">
-                        </div>
-                        <div class="col-md-3 col-sm-2">
-                            <h2 id="City"></h2>
-                        </div>
-                        <div class="col-md-2 col-sm-2"><img class="img-responsive" id="flag" style="visibility: hidden;"></div>
-                        <div class="col-md-2 col-sm-1"></div>
-                    </div>
+    </div>
+    <footer class="mt-5 p-3 text-center bg-light">
+        TheoiOuranioi &copy;
+    </footer>
 
-                    <div class="row">
-                        <div class="col-md-4 col-sm-2"></div>
-                        <div class="col-md-4 col-sm-8">
-                            </p>
-                        </div>
-                        <div class="col-md-4 col-sm-2"></div>
-                    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-                    <div class="row">
-                        <div class="col-md-4 col-sm-2"></div>
-                        <div class="col-md-4 col-sm-8"><img id="image" style="visibility: hidden;" class="img-responsive"></img>
-                        </div>
-                        <div class="col-md-5 col-sm-2"></div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-5 col-sm-2"></div>
-                        <div class="col-md-4 col-sm-8">
-                            <h4 id="Climate"></h4>
-                        </div>
-                        <div class="col-md-5 col-sm-2"></div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-4 col-md-5"></div>
-                        <div class="col-sm-1 col-md-1"><img id="temp_h" src="Resources/high-temperature.svg" class="img-responsive med-img" style="visibility: hidden;">
-                            <p id="htemp"></p>
-                        </div>
-                        <div class="col-sm-2 col-md-2"><img id="temp_l" src="Resources/low-temperature.svg" class="img-responsive med-img" style="visibility: hidden;">
-                            <p id="ltemp"></p>
-                        </div>
-                        <div class="col-sm-4 col-md-6"></div>
-                    </div>
-                    <!-- <hr> -->
-                    <div class="row">
-                        <div class="col-md-5 col-sm-6"></div>
-                        <div class="col-md-4 col-sm-4">
-                            <h4 id="wind-title" style="visibility: hidden;">Wind</h4>
-                        </div>
-                        <div class="col-md-4 col-sm-4"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-5 col-sm-2"></div>
-                        <div class="col-md-4 col-sm-8"><img src="Resources/navigation.svg" class="img-responsive med-img" id="wind-img" style="visibility: hidden;"></div>
-                        <div class="col-md-2 col-sm-2"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-5 col-sm-2"></div>
-                        <div class="col-md-2 col-sm-8">
-                            <p id="wind"></p>
-                        </div>
-                        <div class="col-md-4 col-sm-4"></div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-4 col-md-5"></div>
-                        <div class="col-sm-2 col-md-2"><img id="sunrise" src="Resources/sunny.svg" class="img-responsive med-img" style="visibility: hidden;">
-                            <p id="sr"></p>
-                        </div>
-                        <div class="col-sm-2 col-md-2"><img id="sunset" src="Resources/moon.svg" class="img-responsive med-img" style="visibility: hidden;">
-                            <p id="ss"></p>
-                        </div>
-                        <div class="col-sm-4 col-md-6"></div>
-                    </div>
-
-                    <!-- Trend Starts -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3 style="padding: 10px;" id="forecast">Forecast</h3>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8">
-                            <table style="align-content: center;">
-                                <th>
-                                    <p style="align-content: left;">Time</p>
-                                </th>
-                                <th>&ensp;</th>
-                                <th>
-                                    <p><b>Temperature</b></p>
-                                </th>
-                                <th>&ensp;</th>
-                                <th>
-                                    <p><b>Weather</b></p>
-                                </th>
-                                <th>&ensp;</th>
-                                <th>
-                                    <p><b>Weather Description</b></p>
-                                </th>
-                                <tr>
-                                    <td>
-                                        <p id="date1"></p>
-                                    </td>
-                                    <td>&ensp;</td>
-                                    <td>
-                                        <p id="temp1"></p>
-                                    </td>
-                                    <td>&ensp;</td>
-                                    <td><img class="img-responsive" id="im1" /></td>
-                                    <td>&ensp;</td>
-                                    <td>
-                                        <p id="we1"></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p id="date2"></p>
-                                    </td>
-                                    <td>&ensp;</td>
-                                    <td>
-                                        <p id="temp2"></p>
-                                    </td>
-                                    <td>&ensp;</td>
-                                    <td><img class="img-responsive" id="im2" /></td>
-                                    <td>&ensp;</td>
-                                    <td>
-                                        <p id="we2"></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p id="date3"></p>
-                                    </td>
-                                    <td>&ensp;</td>
-                                    <td>
-                                        <p id="temp3"></p>
-                                    </td>
-                                    <td>&ensp;</td>
-                                    <td><img class="img-responsive" id="im3" /></td>
-                                    <td>&ensp;</td>
-                                    <td>
-                                        <p id="we3"></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p id="date4"></p>
-                                    </td>
-                                    <td>&ensp;</td>
-                                    <td>
-                                        <p id="temp4"></p>
-                                    </td>
-                                    <td>&ensp;</td>
-                                    <td><img class="img-responsive" id="im4" /></td>
-                                    <td>&ensp;</td>
-                                    <td>
-                                        <p id="we4"></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p id="date5"></p>
-                                    </td>
-                                    <td>&ensp;</td>
-                                    <td>
-                                        <p id="temp5"></p>
-                                    </td>
-                                    <td>&ensp;</td>
-                                    <td><img class="img-responsive" id="im5" /></td>
-                                    <td>&ensp;</td>
-                                    <td>
-                                        <p id="we5"></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p id="date6"></p>
-                                    </td>
-                                    <td>&ensp;</td>
-                                    <td>
-                                        <p id="temp6"></p>
-                                    </td>
-                                    <td>&ensp;</td>
-                                    <td><img class="img-responsive" id="im6" /></td>
-                                    <td>&ensp;</td>
-                                    <td>
-                                        <p id="we6"></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p id="date7"></p>
-                                    </td>
-                                    <td>&ensp;</td>
-                                    <td>
-                                        <p id="temp7"></p>
-                                    </td>
-                                    <td>&ensp;</td>
-                                    <td><img class="img-responsive" id="im7" /></td>
-                                    <td>&ensp;</td>
-                                    <td>
-                                        <p id="we7"></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p id="date8"></p>
-                                    </td>
-                                    <td>&ensp;</td>
-                                    <td>
-                                        <p id="temp8"></p>
-                                    </td>
-                                    <td>&ensp;</td>
-                                    <td><img class="img-responsive" id="im8" /></td>
-                                    <td>&ensp;</td>
-                                    <td>
-                                        <p id="we8"></p>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- </div> -->
-
-                <footer>
-
-                </footer>
-            </div>
-
-
-            <!-- JavaScript Bundle with Popper -->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-            <script src="./assets/script.js"></script>
+    <script src="./assets/fetch.js"></script>
+    <script src="./assets/ui.js"></script>
+    <script src="./assets/script.js"></script>
 </body>
 
 </html>
