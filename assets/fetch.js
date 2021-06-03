@@ -3,16 +3,43 @@ class Fetch {
         const myKey = "81cbd7d0addf7aa0b0d00ff1784d04b2";
 
 
-        //make request to url
+        var post;
 
-        const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${myKey}`
-        );
+        // Call the API
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${myKey}`).then(function(response) {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return Promise.reject(response);
+            }
+        }).then(function(data) {
 
-        const data = await response.json();
+            // Store the post data to a variable
+            post = data;
+            console.log(post, "post console");
 
-        console.log(data);
+            var lat = data.coord.lat;
+            var lon = data.coord.lon;
+            console.log(lat, lon, "latlong console");
 
-        return data;
+            // Fetch another API
+            return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${myKey}`);
+
+
+        }).then(function(response) {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return Promise.reject(response);
+            }
+        }).then(function(userData) {
+            console.log(userData, "data console");
+        }).catch(function(error) {
+            console.warn(error);
+        });
+
+
     }
+
+
 }

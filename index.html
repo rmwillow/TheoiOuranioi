@@ -18,21 +18,44 @@
             <a href="#" class="navbar-brand">Theoi Ouranioi</a>
         </div>
     </nav>
-    <div class="container searchContainer">
-        <div class="search card card-body">
-            <h1>Get The Weather For a Location</h1>
-            <p class="lead">Enter Your Location</p>
-            <input type="text" id="searchUser" class="form-control" placeholder="Location">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="container searchContainer">
+                <div class="search card card-body">
+                    <h1>Search for a city:</h1>
+                    <span id="error"></span>
+
+
+                    <input type="text" id="searchCity" class="form-control" placeholder="Location">
+                </div>
+                <br>
+                <div id="profile"></div>
+            </div>
+            <div class="container text-center mt-2">
+                <button class="btn btn-primary" id="submit">Submit</button>
+            </div>
+            <!-- local storage will go here for create elements-->
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
         </div>
-        <br>
-        <div id="profile"></div>
+
+
     </div>
-    <div class="container text-center mt-2">
-        <button class="btn btn-primary" id="submit">Submit</button>
-    </div>
+
 
     <div id="content">
 
+    </div>
+
+    <div class="component__weather-box">
+        <div class="component__weather-content">
+            <div class="weather-content__overview"></div>
+            <div class="weather-content__temp"></div>
+        </div>
+        <div class="component__forecast-box"></div>
     </div>
     <footer class="mt-5 p-3 text-center bg-light">
         TheoiOuranioi &copy;
@@ -41,9 +64,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-    <script src="./assets/fetch.js"></script>
-    <script src="./assets/ui.js"></script>
-    <script src="./assets/script.js"></script>
+    <!-- <script src="./assets/fetch.js"></script> -->
+    <script src="./assets/weather.js"></script>
+
 </body>
 
 </html>
