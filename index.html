@@ -25,23 +25,27 @@
                     <h1>Search for a city:</h1>
                     <span id="error"></span>
 
+                    <form>
+                        <span id="city-item">Search for a city:
+                             <input id="searchCity" type="text" class="form-control " placeholder="Location"/><input
+                            id="add-city"
+                            value="Add Item"
+                            type="button" class="btn btn-primary"/></span>
 
-                    <input type="text" id="searchCity" class="form-control" placeholder="Location">
+                    </form>
+
+
+                    <!-- <input type="text" id="searchCity" class="form-control" placeholder="Location"> -->
                 </div>
                 <br>
                 <div id="todaysWeather"></div>
             </div>
-            <div class="container text-center mt-2">
-                <button class="btn btn-primary" id="submit">Submit</button>
-            </div>
             <!-- local storage will go here for create elements-->
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
+            <div id="cityItem"></div>
+
         </div>
-        <div id="renderList"></div>
+        <div id="renderForecastList" class="icon"></div>
+        <div id="container"></div>
 
 
     </div>
