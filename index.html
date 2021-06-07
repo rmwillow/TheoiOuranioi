@@ -27,12 +27,23 @@
 
                     <form>
                         <span id="city-item">Search for a city:
-                             <input id="searchCity" type="text" class="form-control " placeholder="Location"/><input
+                             <input id="searchCity" type="text" class="form-control" placeholder="Location"/><input
                             id="add-city"
-                            value="Add Item"
-                            type="button" class="btn btn-primary"/></span>
-
+                            value="Search"
+                            type="button" class="btn btn-primary" id="submit"
+                        /></span>
+                        <!-- <button class="btn btn-primary" id="submit">Submit</button> -->
                     </form>
+                    <!--     <form>
+      <span id="todo-item"
+        >To Do Item: <input id="to-do" type="text"/><input
+          id="add-to-do"
+          value="Add Item"
+          type="submit"
+      /></span>
+    </form> -->
+
+
 
 
                     <!-- <input type="text" id="searchCity" class="form-control" placeholder="Location"> -->
@@ -40,8 +51,12 @@
                 <br>
                 <div id="todaysWeather"></div>
             </div>
+            <!-- <div class="container text-center mt-2">
+                <button class="btn btn-primary" id="submit">Submit</button>
+            </div> -->
             <!-- local storage will go here for create elements-->
             <div id="cityItem"></div>
+            <div id="cityTest"></div>
 
         </div>
         <div id="renderForecastList" class="icon"></div>
@@ -55,13 +70,36 @@
 
     </div>
 
-    <div class="component__weather-box">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+
+            <p id="currentDay" class="card-text"></p>
+            <a href="#" class="card-link">Card link</a>
+
+        </div>
+    </div>
+
+
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+
+            <p id="dayOne" class="card-text"></p>
+            <a href="#" class="card-link">Card link</a>
+
+        </div>
+    </div>
+
+
+    <!-- <div class="component__weather-box">
         <div class="component__weather-content">
             <div class="weather-content__overview"></div>
             <div class="weather-content__temp"></div>
         </div>
         <div class="component__forecast-box"></div>
-    </div>
+    </div> -->
     <footer class="mt-5 p-3 text-center bg-light">
         TheoiOuranioi &copy;
     </footer>

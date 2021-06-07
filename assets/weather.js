@@ -1,15 +1,17 @@
 $(document).ready(function() {
     $('#add-city').click(function() {
         var city = $("#searchCity").val();
-        console.log(city);
+        // console.log(city);
 
-        citySearch = [''];
-        citySearch.push(city);
-        console.log(citySearch);
+        // citySearch = [''];
+        // citySearch.push(city);
+        // console.log(city, JSON.stringify);
+        // document.getElementById("cityItem").innerHTML = citySearch;
 
 
 
 
+        // document.getElementById("cityItem").innerHTML = localStorage.getItem(citySearch);
 
 
         //check field is not empty
@@ -35,6 +37,11 @@ $(document).ready(function() {
                     var winds = "Wind Speed: " + data.wind.speed;
                     weatherData.push(dateEpoched, temp, desc, hum, winds)
                         // console.log(weatherData);
+
+                    var currentDay = document.getElementById('currentDay');
+                    currentDay.innerHTML = weatherData;
+                    // document.appendChild("cardText");
+                    // console.log(weatherData);
                     $.ajax({
                         //fetch data
                         url: `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=81cbd7d0addf7aa0b0d00ff1784d04b2` + '&units=imperial',
@@ -47,18 +54,14 @@ $(document).ready(function() {
                             fiveDay = data.daily.slice(0, 6);
                             // console.log(fiveDay);
 
-
-
                             fiveDay.forEach(function(daySet, index) {
-
-
                                 // console.log(daySet)
 
                                 fiveDateEpoch = new Date(daySet.dt * 1000);
                                 // console.log(fiveDateEpoch, index);
                                 var fiveDayTemp = "Temperature: " + daySet.temp.day,
                                     index;
-                                console.log(fiveDayTemp);
+                                // console.log(fiveDayTemp);
 
 
                                 var fiveDayHumid = "Humidity: " + daySet.humidity,
@@ -73,59 +76,146 @@ $(document).ready(function() {
                                 // console.log(weatherSet);
 
                                 weatherSet.forEach(function(weatherDay, index) {
-                                    console.log(weatherDay);
+                                    // console.log(weatherDay);
                                     var fiveDayDesc = "Description: " + weatherDay.description,
                                         index;
                                     var fiveDayImage = weatherDay.icon,
                                         index;
                                     // img.src = 'http://openweathermap.org/img/wn/' + fiveDayImage + '.png';
 
-                                    // fiveDayIcon = 'http://openweathermap.org/img/wn/' + fiveDayImage + '.png';
+                                    fiveDayIcon = 'http://openweathermap.org/img/wn/' + fiveDayImage + '.png';
+                                    // console.log(fiveDayIcon);
+                                    // localStorage.setItem(city, fiveDayForcast);
+                                    // var cardText = document.getElementById('cardsWeather');
+                                    // cardText.innerHTML = fiveDayForcast;
+                                    // document.appendChild(cardText);
+
+                                    // var cardText = document.getElementById("cardsWeather");
+                                    // cardText.appendChild(fiveDayForcast);
+
+
+
+
+                                    // let iconArray = [];
+                                    // for (i = 0; i < 7; i++) {
+                                    //     iconArray.push(fiveDayImage, index);
+                                    //     console.log(iconArray);
+                                    // }
+
+                                    // localStorage.setItem(city, fiveDayForcast);
+                                    // var cardText = document.getElementById('cardsWeather');
+                                    // cardText.innerHTML = fiveDayForcast;
+                                    // document.appendChild(cardText);
+
+                                    // var fiveDayIcon = `http://webpage.com/images/'${fiveDayImage}.png`,
+                                    // //     index;
                                     // console.log(fiveDayIcon);
 
 
-                                    var fiveDayIcon = `http://webpage.com/images/'${fiveDayImage, index}.png`,
-                                        index;
+                                    // const img = document.querySelector('img');
 
+                                    // img.setAttribute('src', `http://webpage.com/images/'${fiveDayImage, index}.png`, index);
 
 
 
                                     var fiveDayForcast = [''];
 
                                     fiveDayForcast.push(fiveDateEpoch, fiveDayTemp, fiveDayHumid, fiveDayWind, fiveDayDesc, fiveDayIcon);
-                                    console.log(fiveDayForcast);
-
-                                    localStorage.setItem(city, fiveDayForcast);
-
-
-                                    (function() {
-                                        var ul = document.createElement('ul');
-                                        ul.setAttribute('id', 'forecastList');
-                                        fiveForecast = fiveDayForcast;
+                                    // console.log(fiveDateEpoch);
+                                    const myJSON = JSON.stringify(fiveDayForcast);
+                                    console.log(fiveDateEpoch[0]);
 
 
-                                        document.getElementById('renderForecastList').appendChild(ul);
+                                    var dayOne = document.getElementById('dayOne');
+                                    var dayOne = fiveDayForcast[0];
+                                    dayOne.innerHTML = dayOne;
+                                    // console.log("todaaaay" + dayOne);
+                                    // document.appendChild("cardText");
 
-                                        fiveForecast.forEach(renderProductList);
-                                        // iconDay.forEach(renderProductList);
+                                    var firstDayForecast = [''];
+                                    firstDayForecast.push(fiveDateEpoch[0], fiveDayTemp[0], fiveDayHumid[0], fiveDayWind[0], fiveDayDesc[0], fiveDayIcon[0]);
+                                    console.log(fiveDateEpoch[0]);
+
+                                    // localStorage.setItem(city, myJSON);
+                                    // console.log(myJSON);
+                                    // document.getElementsById("cityTest");
+                                    // document.appendChild("cityTest");
+                                    // document.getElementById(city);
 
 
-                                        function renderProductList(element, index, arr) {
-                                            var li = document.createElement('li');
-                                            li.setAttribute('class', 'item');
+
+                                    // cityFiveDayWeather = function(city) {
+                                    //     var cityFiveDayWeather = fiveDayForcast;
+                                    //     console.log(cityFiveDayWeather)
+                                    // }
+
+                                    // fiveDayForcast.forEach(function(dayWeather, index) {
+                                    //     console.log(dayWeather)
+
+                                    // }
+
+                                    //     // var forecast = document.getElementById('todaysWeather');
+                                    //     // forecast.innerHTML = dayWeather;
 
 
-                                            ul.appendChild(li);
 
-                                            li.innerHTML = li.innerHTML + element;
-                                            document.getElementById("forecastList").style.backgroundColor = "blue";
 
-                                        }
-                                    })();
+                                    //     // localStorage.setItem(city, fiveDayForcast);
+                                    //     // dayOne = [''];
+                                    //     // dayOne.push(fiveDayForcast[0]);
+                                    //     // console.log("this is day one" + dayOne);
+                                    // });
+
+                                    // for (let i = 0; i < 6; i++) {
+                                    //     console.log(fiveDayForcast[0])
+                                    //     var cardText = document.getElementById('cardsWeather');
+                                    //     cardText.innerHTML = fiveDayForcast;
+                                    //     // document.appendChild("cardText");
+                                    //     console.log(fiveDayForcast);
+
+                                    // }
+
+
+
+
+                                    // (function() {
+                                    //     var ul = document.createElement('ul');
+                                    //     ul.setAttribute('id', 'forecastList');
+                                    //     fiveForecast = fiveDayForcast;
+
+
+                                    //     document.getElementById('renderForecastList').appendChild(ul);
+
+                                    //     fiveForecast.forEach(renderProductList);
+                                    //     // iconDay.forEach(renderProductList);
+
+
+                                    //     function renderProductList(element, index, arr) {
+
+                                    //         var li = document.createElement('li');
+                                    //         li.setAttribute('class', 'item');
+                                    //         ul.appendChild(li);
+
+                                    //         li.innerHTML = li.innerHTML + element;
+                                    //         document.getElementById("renderForecastList").style.backgroundColor = "blue";
+                                    //         document.getElementById("renderForecastList").style.listStyleType = "none";
+
+                                    //         document.getElementById("renderForecastList").style = "width: 18rem;";
+                                    //         document.getElementById("renderForecastList").style = "borderColor: blue;";
+
+                                    //         // document.getElementsByClassName("forecastList").style.backgroundColor = "red";
+
+                                    //         li.style.backgroundImage = "url('http://openweathermap.org/img/wn/' + fiveDayImage + '.png')";
+                                    //         ul.style.borderColor = "black";
+                                    //         li.style.listStyle = "none"
+
+                                    //         // document.getElementById("forecastList").style.listStyle = `http://webpage.com/images/'${fiveDayImage}.png`;
+
+                                    //     }
+                                    // })();
 
                                 })
                             });
-
 
                         }
 
@@ -140,12 +230,10 @@ $(document).ready(function() {
             })
         }
 
-
-
         function renderTodos(city) {
             // Empties out the html
             $('#cityItem').empty();
-            console.log(city);
+            // console.log(city);
 
             // Creates a new variable 'toDoItem' that will hold a "<p>" tag
             // Sets the `list` item's value as text of this <p> element
@@ -197,14 +285,14 @@ $(document).ready(function() {
             var toDoNumber = $(this).attr('data-to-do');
 
             // Delete the to-do with that `id` from our local `city` using `.splice()`
-            city.splice(toDoNumber, 1);
+            city.splice(toDoNumber, city);
 
             // Update the cityItem on the page
             renderTodos(city);
 
             // Save the cityItem into localStorage
             // We need to use JSON.stringify to turn the city from an array into a string
-            localStorage.setItem('cityNameList', JSON.stringify(city));
+            localStorage.setItem('cityItem', JSON.stringify(city));
         });
 
         // render our cityItem on page load
