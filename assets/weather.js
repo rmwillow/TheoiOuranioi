@@ -55,13 +55,16 @@ $(document).ready(function() {
                             // console.log(fiveDay);
 
                             fiveDay.forEach(function(daySet, index) {
-                                // console.log(daySet)
+                                console.log(daySet)
 
                                 fiveDateEpoch = new Date(daySet.dt * 1000);
                                 // console.log(fiveDateEpoch, index);
                                 var fiveDayTemp = "Temperature: " + daySet.temp.day,
                                     index;
                                 // console.log(fiveDayTemp);
+
+
+
 
 
                                 var fiveDayHumid = "Humidity: " + daySet.humidity,
@@ -82,9 +85,10 @@ $(document).ready(function() {
                                     var fiveDayImage = weatherDay.icon,
                                         index;
                                     // img.src = 'http://openweathermap.org/img/wn/' + fiveDayImage + '.png';
+                                    // fiveDayIcon = display.innerHTML = `<img src="http://openweathermap.org/img/wn/${fiveDayImage}.png">`
 
-                                    fiveDayIcon = 'http://openweathermap.org/img/wn/' + fiveDayImage + '.png';
-                                    // console.log(fiveDayIcon);
+                                    fiveDayIcon = `<img src="http://openweathermap.org/img/wn/${fiveDayImage}.png">`
+                                    console.log(fiveDayIcon);
                                     // localStorage.setItem(city, fiveDayForcast);
                                     // var cardText = document.getElementById('cardsWeather');
                                     // cardText.innerHTML = fiveDayForcast;
@@ -107,7 +111,8 @@ $(document).ready(function() {
                                     // cardText.innerHTML = fiveDayForcast;
                                     // document.appendChild(cardText);
 
-                                    // var fiveDayIcon = `http://webpage.com/images/'${fiveDayImage}.png`,
+                                    // var fiveDayIcon = `
+                                    // http: //webpage.com/images/'${fiveDayImage}.png`,
                                     // //     index;
                                     // console.log(fiveDayIcon);
 
@@ -116,14 +121,36 @@ $(document).ready(function() {
 
                                     // img.setAttribute('src', `http://webpage.com/images/'${fiveDayImage, index}.png`, index);
 
+                                    var uv = daySet.uvi,
+                                        index;
+                                    console.log(uv);
 
 
-                                    var fiveDayForcast = [''];
 
-                                    fiveDayForcast.push(fiveDateEpoch, fiveDayTemp, fiveDayHumid, fiveDayWind, fiveDayDesc, fiveDayIcon);
+                                    if (uv < 7.0) {
+                                        console.log("the weather is green")
+                                    } else {
+                                        console.log("the weather is red")
+
+                                    }
+                                    //add color coding here to new element 
+
+                                    var fiveDayForcast = [];
+
+                                    fiveDayForcast.push(fiveDateEpoch, fiveDayTemp, fiveDayHumid, fiveDayWind, fiveDayDesc, uv, fiveDayIcon);
                                     // console.log(fiveDateEpoch);
                                     const myJSON = JSON.stringify(fiveDayForcast);
-                                    console.log(fiveDateEpoch[0]);
+                                    console.log(fiveDayForcast);
+                                    var iconImage = document.getElementById("cityTest")
+                                    iconImage.append(fiveDayForcast);
+
+
+                                    // for (i = 0; i < fiveDateEpoch.length; i++) {
+                                    //     for (j = 0; j < fiveDateEpoch[i].length; j++) {
+                                    //         console.log(fiveDateEpoch[i][j] + " is a " + fiveDateEpoch[i][j][1] + " year old " + fiveDateEpoch[i][j][2]);
+                                    //     }
+                                    // }
+
 
 
                                     var dayOne = document.getElementById('dayOne');
@@ -132,15 +159,48 @@ $(document).ready(function() {
                                     // console.log("todaaaay" + dayOne);
                                     // document.appendChild("cardText");
 
-                                    var firstDayForecast = [''];
+                                    var firstDayForecast = [];
                                     firstDayForecast.push(fiveDateEpoch[0], fiveDayTemp[0], fiveDayHumid[0], fiveDayWind[0], fiveDayDesc[0], fiveDayIcon[0]);
                                     console.log(fiveDateEpoch[0]);
 
-                                    // localStorage.setItem(city, myJSON);
+                                    window.localStorage.setItem(city, myJSON);
                                     // console.log(myJSON);
-                                    // document.getElementsById("cityTest");
-                                    // document.appendChild("cityTest");
-                                    // document.getElementById(city);
+
+                                    // document.querySelector('#cityItem');
+                                    // document.appendChild('cityItem');
+                                    // // local.innerHTML = localCity;
+                                    // window.localStorage.setItem('cityName', JSON.stringify(city));
+                                    // console.log(localStorage);
+                                    // JSON.parse(window.localStorage.getItem('cityName'));
+                                    // for (x in localStorage) {
+                                    //     console.log(localStorage[x]);
+                                    // }
+
+
+                                    // console.log(localStorage);
+                                    cityName = [];
+                                    cityName.push(localStorage);
+                                    var cityOut = document.getElementById('cityItem');
+                                    // const localJSON = JSON.stringify(city,);
+                                    cityOut.innerHTML = city;
+                                    console.log(cityOut, cityName);
+
+                                    // const cityJSON = JSON.stringify(cityName);
+                                    // console.log(cityName);
+
+
+
+                                    // var cityOut = document.getElementById('cityItem');
+                                    // cityOut.innerHTML = cityName;
+
+                                    // console.log(cityName[0]);
+                                    // $('body').append(localStorage.getItem(localStorage.city(i)));
+
+                                    //get locoal storage and append it to new button element 
+
+
+                                    // console.log(local);
+
 
 
 
@@ -213,9 +273,9 @@ $(document).ready(function() {
 
                                     //     }
                                     // })();
-
-                                })
+                                });
                             });
+
 
                         }
 
