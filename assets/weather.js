@@ -29,8 +29,10 @@ $(document).ready(function() {
                     var lat = data.coord.lat;
                     var lon = data.coord.lon;
                     // console.log(lat, lon, "latlong console");
-                    var date = data.dt;
-                    var dateEpoched = new Date(date * 1000);
+                    // var date = data.dt;
+
+                    var dateEpoched = "date: " + new Date(data.dt * 1000);
+                    console.log(dateEpoched);
                     var temp = "Temperature: " + data.main.temp;
                     var desc = "Description: " + data.weather[0].description;
                     var hum = "Humidity: " + data.main.humidity;
@@ -38,8 +40,13 @@ $(document).ready(function() {
                     weatherData.push(dateEpoched, temp, desc, hum, winds)
                         // console.log(weatherData);
 
+                    // var currentDayDate = document.getElementById('currentDate');
+                    // currentDayDate.innerHTML = dateEpoched;
+
                     var currentDay = document.getElementById('currentDay');
                     currentDay.innerHTML = weatherData;
+
+
                     // document.appendChild("cardText");
                     // console.log(weatherData);
                     $.ajax({
@@ -49,232 +56,311 @@ $(document).ready(function() {
                         dataType: "jsonp",
                         //store result in
                         success: function(data) {
+                            console.log(data);
 
+                            // dayOneEpoch = new Date(data.daily[1].dt * 1000);
 
-                            fiveDay = data.daily.slice(0, 6);
-                            // console.log(fiveDay);
+                            var dayOneEpoch = "date: " + new Date(data.daily[1].dt * 1000);
 
-                            fiveDay.forEach(function(daySet, index) {
-                                console.log(daySet)
+                            console.log(dayOneD);
+                            var dayOneH = "Humidity: " + data.daily[1].humidity;
+                            var dayOneT = "Temperature: " + data.daily[1].temp.day;
+                            var dayOneW = "Wind Speed: " + data.daily[1].wind_speed;
+                            var dayOneU = "UV Index: " + data.daily[1].uvi;
+                            // if (dayOneU < 7.0) {
+                            //     console.log("the weather is green")
+                            // } else {
+                            //     console.log("the weather is red")
 
-                                fiveDateEpoch = new Date(daySet.dt * 1000);
-                                // console.log(fiveDateEpoch, index);
-                                var fiveDayTemp = "Temperature: " + daySet.temp.day,
-                                    index;
-                                // console.log(fiveDayTemp);
+                            // }
+                            //add color coding here to new element 
 
+                            var dayOneD = data.daily[1].weather[0].description;
+                            var dayOneI = data.daily[1].weather[0].icon;
 
+                            //create array and add day one data to it 
+                            var dayOneData = [];
+                            dayOneData.push(dayOneH, dayOneT, dayOneW, dayOneU, dayOneD, dayOneI)
+                            console.log(dayOneData);
 
 
+                            var dayOneDate = document.getElementById('dayOneDate');
+                            dayOneDate.innerHTML = dayOneEpoch;
 
-                                var fiveDayHumid = "Humidity: " + daySet.humidity,
-                                    index;
-                                // console.log(fiveDayHumid);
+                            // var dayOneEpoch = new Date();
+                            // document.getElementById("card-date").innerHTML = dayOneEpoch.toLocaleString();
 
-                                var fiveDayWind = "Wind Speed: " + daySet.wind_speed,
-                                    index;
-                                // console.log(fiveDayWind);
 
-                                weatherSet = daySet.weather;
-                                // console.log(weatherSet);
+                            //displays the dayonedata
+                            var dayOne = document.getElementById('dayOneWeather');
+                            dayOne.innerHTML = dayOneData;
 
-                                weatherSet.forEach(function(weatherDay, index) {
-                                    // console.log(weatherDay);
-                                    var fiveDayDesc = "Description: " + weatherDay.description,
-                                        index;
-                                    var fiveDayImage = weatherDay.icon,
-                                        index;
-                                    // img.src = 'http://openweathermap.org/img/wn/' + fiveDayImage + '.png';
-                                    // fiveDayIcon = display.innerHTML = `<img src="http://openweathermap.org/img/wn/${fiveDayImage}.png">`
 
-                                    fiveDayIcon = `<img src="http://openweathermap.org/img/wn/${fiveDayImage}.png">`
-                                    console.log(fiveDayIcon);
-                                    // localStorage.setItem(city, fiveDayForcast);
-                                    // var cardText = document.getElementById('cardsWeather');
-                                    // cardText.innerHTML = fiveDayForcast;
-                                    // document.appendChild(cardText);
+                            // var iconImage = document.getElementById("cityTest")
+                            // iconImage.append(dayOneData);
+                            //create list for each than diplsay and append each list fro each day
 
-                                    // var cardText = document.getElementById("cardsWeather");
-                                    // cardText.appendChild(fiveDayForcast);
+                            // console.log(dayOne);
 
 
+                            // fiveDay = data.daily.slice(0, 6);
+                            // // console.log(fiveDay);
 
+                            // fiveDay.forEach(function(daySet, index) {
+                            //     console.log(daySet)
 
-                                    // let iconArray = [];
-                                    // for (i = 0; i < 7; i++) {
-                                    //     iconArray.push(fiveDayImage, index);
-                                    //     console.log(iconArray);
-                                    // }
+                            //     fiveDateEpoch = new Date(daySet.dt * 1000);
+                            // // console.log(fiveDateEpoch, index);
+                            // var fiveDayTemp = "Temperature: " + daySet.temp.day,
+                            //     index;
+                            // console.log(fiveDayTemp);
 
-                                    // localStorage.setItem(city, fiveDayForcast);
-                                    // var cardText = document.getElementById('cardsWeather');
-                                    // cardText.innerHTML = fiveDayForcast;
-                                    // document.appendChild(cardText);
 
-                                    // var fiveDayIcon = `
-                                    // http: //webpage.com/images/'${fiveDayImage}.png`,
-                                    // //     index;
-                                    // console.log(fiveDayIcon);
 
 
-                                    // const img = document.querySelector('img');
 
-                                    // img.setAttribute('src', `http://webpage.com/images/'${fiveDayImage, index}.png`, index);
+                            // var fiveDayHumid = "Humidity: " + daySet.humidity,
+                            //     index;
+                            // // console.log(fiveDayHumid);
 
-                                    var uv = daySet.uvi,
-                                        index;
-                                    console.log(uv);
+                            // var fiveDayWind = "Wind Speed: " + daySet.wind_speed,
+                            //     index;
+                            // // console.log(fiveDayWind);
 
+                            // weatherSet = daySet.weather;
+                            // // console.log(weatherSet);
 
+                            // weatherSet.forEach(function(weatherDay, index) {
+                            //     // console.log(weatherDay);
+                            //     var fiveDayDesc = "Description: " + weatherDay.description,
+                            //         index;
+                            //     var fiveDayImage = weatherDay.icon,
+                            //         index;
+                            //     // img.src = 'http://openweathermap.org/img/wn/' + fiveDayImage + '.png';
+                            //     // fiveDayIcon = display.innerHTML = `<img src="http://openweathermap.org/img/wn/${fiveDayImage}.png">`
 
-                                    if (uv < 7.0) {
-                                        console.log("the weather is green")
-                                    } else {
-                                        console.log("the weather is red")
+                            //     fiveDayIcon = `<img src="http://openweathermap.org/img/wn/${fiveDayImage}.png">`
+                            //     console.log(fiveDayIcon);
+                            // localStorage.setItem(city, fiveDayForcast);
+                            // var cardText = document.getElementById('cardsWeather');
+                            // cardText.innerHTML = fiveDayForcast;
+                            // document.appendChild(cardText);
 
-                                    }
-                                    //add color coding here to new element 
+                            // var cardText = document.getElementById("cardsWeather");
+                            // cardText.appendChild(fiveDayForcast);
 
-                                    var fiveDayForcast = [];
 
-                                    fiveDayForcast.push(fiveDateEpoch, fiveDayTemp, fiveDayHumid, fiveDayWind, fiveDayDesc, uv, fiveDayIcon);
-                                    // console.log(fiveDateEpoch);
-                                    const myJSON = JSON.stringify(fiveDayForcast);
-                                    console.log(fiveDayForcast);
-                                    var iconImage = document.getElementById("cityTest")
-                                    iconImage.append(fiveDayForcast);
 
 
-                                    // for (i = 0; i < fiveDateEpoch.length; i++) {
-                                    //     for (j = 0; j < fiveDateEpoch[i].length; j++) {
-                                    //         console.log(fiveDateEpoch[i][j] + " is a " + fiveDateEpoch[i][j][1] + " year old " + fiveDateEpoch[i][j][2]);
-                                    //     }
-                                    // }
+                            // let iconArray = [];
+                            // for (i = 0; i < 7; i++) {
+                            //     iconArray.push(fiveDayImage, index);
+                            //     console.log(iconArray);
+                            // }
 
+                            // localStorage.setItem(city, fiveDayForcast);
+                            // var cardText = document.getElementById('cardsWeather');
+                            // cardText.innerHTML = fiveDayForcast;
+                            // document.appendChild(cardText);
 
+                            // var fiveDayIcon = `
+                            // http: //webpage.com/images/'${fiveDayImage}.png`,
+                            // //     index;
+                            // console.log(fiveDayIcon);
 
-                                    var dayOne = document.getElementById('dayOne');
-                                    var dayOne = fiveDayForcast[0];
-                                    dayOne.innerHTML = dayOne;
-                                    // console.log("todaaaay" + dayOne);
-                                    // document.appendChild("cardText");
 
-                                    var firstDayForecast = [];
-                                    firstDayForecast.push(fiveDateEpoch[0], fiveDayTemp[0], fiveDayHumid[0], fiveDayWind[0], fiveDayDesc[0], fiveDayIcon[0]);
-                                    console.log(fiveDateEpoch[0]);
+                            // const img = document.querySelector('img');
 
-                                    window.localStorage.setItem(city, myJSON);
-                                    // console.log(myJSON);
+                            // img.setAttribute('src', `http://webpage.com/images/'${fiveDayImage, index}.png`, index);
 
-                                    // document.querySelector('#cityItem');
-                                    // document.appendChild('cityItem');
-                                    // // local.innerHTML = localCity;
-                                    // window.localStorage.setItem('cityName', JSON.stringify(city));
-                                    // console.log(localStorage);
-                                    // JSON.parse(window.localStorage.getItem('cityName'));
-                                    // for (x in localStorage) {
-                                    //     console.log(localStorage[x]);
-                                    // }
+                            // var uv = daySet.uvi,
+                            //     index;
+                            // console.log(uv);
 
 
-                                    // console.log(localStorage);
-                                    cityName = [];
-                                    cityName.push(localStorage);
-                                    var cityOut = document.getElementById('cityItem');
-                                    // const localJSON = JSON.stringify(city,);
-                                    cityOut.innerHTML = city;
-                                    console.log(cityOut, cityName);
 
-                                    // const cityJSON = JSON.stringify(cityName);
-                                    // console.log(cityName);
+                            // if (uv < 7.0) {
+                            //     console.log("the weather is green")
+                            // } else {
+                            //     // console.log("the weather is red")
 
+                            // }
+                            // //add color coding here to new element 
 
+                            // var fiveDayForcast = [];
 
-                                    // var cityOut = document.getElementById('cityItem');
-                                    // cityOut.innerHTML = cityName;
+                            // fiveDayForcast.push(fiveDateEpoch, fiveDayTemp, fiveDayHumid, fiveDayWind, fiveDayDesc, uv, fiveDayIcon);
+                            // console.log(fiveDayForcast[0]);
 
-                                    // console.log(cityName[0]);
-                                    // $('body').append(localStorage.getItem(localStorage.city(i)));
 
-                                    //get locoal storage and append it to new button element 
+                            // const myJSON = JSON.stringify(fiveDayForcast);
+                            // console.log(fiveDayForcast);
 
 
-                                    // console.log(local);
 
+                            // var dayOneEpoch = (fiveDayForcast[0[0]]);
+                            // console.log(dayOneEpoch);
 
+                            // var dayOneTemp = (fiveDayForcast[1]);
+                            // // console.log("Temperature: " + dayOneTemp);
 
+                            // var dayOneHumid = (fiveDayForcast[2]);
+                            // // console.log("humid: " + dayOneHumid);
 
-                                    // cityFiveDayWeather = function(city) {
-                                    //     var cityFiveDayWeather = fiveDayForcast;
-                                    //     console.log(cityFiveDayWeather)
-                                    // }
+                            // var dayOneWind = (fiveDayForcast[3]);
+                            // // console.log("wind: " + dayOneWind);
 
-                                    // fiveDayForcast.forEach(function(dayWeather, index) {
-                                    //     console.log(dayWeather)
+                            // var dayOneDesc = (fiveDayForcast[4]);
+                            // // console.log("wind: " + dayOneDesc);
 
-                                    // }
+                            // var dayOneUv = (fiveDayForcast[5]);
+                            // // console.log("wind: " + dayOneUv);
 
-                                    //     // var forecast = document.getElementById('todaysWeather');
-                                    //     // forecast.innerHTML = dayWeather;
+                            // var dayOneIcon = (fiveDayForcast[6]);
+                            // // console.log("wind: " + dayOneIcon);
 
 
 
 
-                                    //     // localStorage.setItem(city, fiveDayForcast);
-                                    //     // dayOne = [''];
-                                    //     // dayOne.push(fiveDayForcast[0]);
-                                    //     // console.log("this is day one" + dayOne);
-                                    // });
+                            // dayOneData = [];
+                            // dayOneData.push(dayOneEpoch, dayOneTemp, dayOneHumid, dayOneWind, dayOneDesc, dayOneUv, dayOneIcon)
+                            // console.log("this is the day one data set" + dayOneData);
 
-                                    // for (let i = 0; i < 6; i++) {
-                                    //     console.log(fiveDayForcast[0])
-                                    //     var cardText = document.getElementById('cardsWeather');
-                                    //     cardText.innerHTML = fiveDayForcast;
-                                    //     // document.appendChild("cardText");
-                                    //     console.log(fiveDayForcast);
+                            // var iconImage = document.getElementById("cityTest")
+                            // iconImage.append(dayOneData);
 
-                                    // }
 
 
+                            // for (i = 0; i < fiveDateEpoch.length; i++) {
+                            //     for (j = 0; j < fiveDateEpoch[i].length; j++) {
+                            //         console.log(fiveDateEpoch[i][j] + " is a " + fiveDateEpoch[i][j][1] + " year old " + fiveDateEpoch[i][j][2]);
+                            //     }
+                            // }
 
 
-                                    // (function() {
-                                    //     var ul = document.createElement('ul');
-                                    //     ul.setAttribute('id', 'forecastList');
-                                    //     fiveForecast = fiveDayForcast;
 
+                            // var dayOne = document.getElementById('dayOne');
+                            // var dayOne = fiveDayForcast[0];
+                            // dayOne.innerHTML = dayOne;
+                            // console.log("todaaaay" + dayOne);
+                            // document.appendChild("cardText");
 
-                                    //     document.getElementById('renderForecastList').appendChild(ul);
+                            // var firstDayForecast = [];
+                            // firstDayForecast.push(fiveDateEpoch[0], fiveDayTemp[0], fiveDayHumid[0], fiveDayWind[0], fiveDayDesc[0], fiveDayIcon[0]);
+                            // console.log(fiveDateEpoch[0]);
 
-                                    //     fiveForecast.forEach(renderProductList);
-                                    //     // iconDay.forEach(renderProductList);
+                            // window.localStorage.setItem(city, myJSON);
+                            // // console.log(myJSON);
 
+                            // document.querySelector('#cityItem');
+                            // document.appendChild('cityItem');
+                            // // local.innerHTML = localCity;
+                            // window.localStorage.setItem('cityName', JSON.stringify(city));
+                            // console.log(localStorage);
+                            // JSON.parse(window.localStorage.getItem('cityName'));
+                            // for (x in localStorage) {
+                            //     console.log(localStorage[x]);
+                            // }
 
-                                    //     function renderProductList(element, index, arr) {
 
-                                    //         var li = document.createElement('li');
-                                    //         li.setAttribute('class', 'item');
-                                    //         ul.appendChild(li);
+                            // console.log(localStorage);
+                            // cityName = [];
+                            // cityName.push(localStorage);
+                            // var cityOut = document.getElementById('cityItem');
+                            // // const localJSON = JSON.stringify(city,);
+                            // cityOut.innerHTML = city;
+                            // console.log(cityOut, cityName);
 
-                                    //         li.innerHTML = li.innerHTML + element;
-                                    //         document.getElementById("renderForecastList").style.backgroundColor = "blue";
-                                    //         document.getElementById("renderForecastList").style.listStyleType = "none";
+                            // const cityJSON = JSON.stringify(cityName);
+                            // console.log(cityName);
 
-                                    //         document.getElementById("renderForecastList").style = "width: 18rem;";
-                                    //         document.getElementById("renderForecastList").style = "borderColor: blue;";
 
-                                    //         // document.getElementsByClassName("forecastList").style.backgroundColor = "red";
 
-                                    //         li.style.backgroundImage = "url('http://openweathermap.org/img/wn/' + fiveDayImage + '.png')";
-                                    //         ul.style.borderColor = "black";
-                                    //         li.style.listStyle = "none"
+                            // var cityOut = document.getElementById('cityItem');
+                            // cityOut.innerHTML = cityName;
 
-                                    //         // document.getElementById("forecastList").style.listStyle = `http://webpage.com/images/'${fiveDayImage}.png`;
+                            // console.log(cityName[0]);
+                            // $('body').append(localStorage.getItem(localStorage.city(i)));
 
-                                    //     }
-                                    // })();
-                                });
-                            });
+                            //get locoal storage and append it to new button element 
+
+
+                            // console.log(local);
+
+
+
+
+                            // cityFiveDayWeather = function(city) {
+                            //     var cityFiveDayWeather = fiveDayForcast;
+                            //     console.log(cityFiveDayWeather)
+                            // }
+
+                            // fiveDayForcast.forEach(function(dayWeather, index) {
+                            //     console.log(dayWeather)
+
+                            // }
+
+                            //     // var forecast = document.getElementById('todaysWeather');
+                            //     // forecast.innerHTML = dayWeather;
+
+
+
+
+                            //     // localStorage.setItem(city, fiveDayForcast);
+                            //     // dayOne = [''];
+                            //     // dayOne.push(fiveDayForcast[0]);
+                            //     // console.log("this is day one" + dayOne);
+                            // });
+
+                            // for (let i = 0; i < 6; i++) {
+                            //     console.log(fiveDayForcast[0])
+                            //     var cardText = document.getElementById('cardsWeather');
+                            //     cardText.innerHTML = fiveDayForcast;
+                            //     // document.appendChild("cardText");
+                            //     console.log(fiveDayForcast);
+
+                            // }
+
+
+
+
+                            // (function() {
+                            //     var ul = document.createElement('ul');
+                            //     ul.setAttribute('id', 'forecastList');
+                            //     fiveForecast = fiveDayForcast;
+
+
+                            //     document.getElementById('renderForecastList').appendChild(ul);
+
+                            //     fiveForecast.forEach(renderProductList);
+                            //     // iconDay.forEach(renderProductList);
+
+
+                            //     function renderProductList(element, index, arr) {
+
+                            //         var li = document.createElement('li');
+                            //         li.setAttribute('class', 'item');
+                            //         ul.appendChild(li);
+
+                            //         li.innerHTML = li.innerHTML + element;
+                            //         document.getElementById("renderForecastList").style.backgroundColor = "blue";
+                            //         document.getElementById("renderForecastList").style.listStyleType = "none";
+
+                            //         document.getElementById("renderForecastList").style = "width: 18rem;";
+                            //         document.getElementById("renderForecastList").style = "borderColor: blue;";
+
+                            //         // document.getElementsByClassName("forecastList").style.backgroundColor = "red";
+
+                            //         li.style.backgroundImage = "url('http://openweathermap.org/img/wn/' + fiveDayImage + '.png')";
+                            //         ul.style.borderColor = "black";
+                            //         li.style.listStyle = "none"
+
+                            //         // document.getElementById("forecastList").style.listStyle = `http://webpage.com/images/'${fiveDayImage}.png`;
+
+                            //     }
+                            // })();
+
+
 
 
                         }
