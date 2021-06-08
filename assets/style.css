@@ -1,11 +1,5 @@
-.ul {
-    border: 20px;
-    color: red;
-    background-color: green;
-}
-
-.ul {
-    border: 20px;
-    color: red;
-    background-color: green;
+.col-sm-3 {
+    width: 20%;
+    margin: 0 2.5%;
+    padding-top: 15%;
 }

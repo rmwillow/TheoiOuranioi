@@ -18,8 +18,8 @@
             <a href="#" class="navbar-brand">Theoi Ouranioi</a>
         </div>
     </nav>
-    <div class="row">
-        <div class="col-sm-6">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 ">
             <div class="container searchContainer">
                 <div class="search card card-body">
                     <h1>Search for a city:</h1>
@@ -27,151 +27,120 @@
 
                     <form>
                         <span id="city-item">Search for a city:
-                             <input id="searchCity" type="text" class="form-control" placeholder="Location"/><input
+                             <input id="searchCity" type="text" class="form-control" placeholder="Location"/><br /><input
                             id="add-city"
                             value="Search"
                             type="button" class="btn btn-primary" id="submit"
                         /></span>
-                        <!-- <button class="btn btn-primary" id="submit">Submit</button> -->
                     </form>
-                    <!--     <form>
-      <span id="todo-item"
-        >To Do Item: <input id="to-do" type="text"/><input
-          id="add-to-do"
-          value="Add Item"
-          type="submit"
-      /></span>
-    </form> -->
-
-
-
-
-                    <!-- <input type="text" id="searchCity" class="form-control" placeholder="Location"> -->
                 </div>
-                <br>
-                <div id="todaysWeather"></div>
             </div>
-            <!-- <div class="container text-center mt-2">
-                <button class="btn btn-primary" id="submit">Submit</button>
-            </div> -->
-            <!-- local storage will go here for create elements-->
-
-            <!-- <div id="cityTest"></div> -->
-
+            <br />
+            <div id="cityItem"></div>
         </div>
-        <div id="renderForecastList" class="icon"></div>
-        <div id="container"></div>
 
 
-    </div>
-
-
-    <div id="content">
         <!-- current date forecast -->
-    </div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="currentDate">Card title</h5>
 
-            <p id="currentDay" class="card-text"></p>
-            <a href="#" class="card-link">Card link</a>
+        <div class="card col-sm-5 offset-1" style="margin: 1rem;">
+            <div class="card-body">
+                <h5 id="currentDate">Card title</h5>
+                <p id="currentTemp"></p>
+                <p id="currentHumidity"></p>
+                <p id="currentWind"></p>
+                <p id="currentWeather" class="card-text"></p>
+                <p id="currentIcon"></p>
 
+            </div>
         </div>
-    </div>
 
 
-    <!-- first day forecast -->
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 id="dayOneDate">Card title</h5>
-            <p id="dayOneTemp"></p>
-            <p id="dayOneHumidity"></p>
-            <p id="dayOneWind"></p>
-            <p id="dayOneUv"></p>
-            <p id="dayOneWeather" class="card-text"></p>
-            <p id="dayOneIcon"></p>
-            <a href="#" class="card-link">Card link</a>
 
+
+        <!-- first day forecast -->
+        <div class="card col-sm-2 offset-1" style="margin: 1rem;">
+            <div class="card-body">
+                <h5 id="dayOneDate">Card title</h5>
+                <p id="dayOneTemp"></p>
+                <p id="dayOneHumidity"></p>
+                <p id="dayOneWind"></p>
+                <p id="dayOneUv"></p>
+                <p id="dayOneWeather" class="card-text"></p>
+                <p id="dayOneIcon"></p>
+                <a href="#" class="card-link">Card link</a>
+
+            </div>
         </div>
-    </div>
-    <!-- 2nd day forecast -->
+        <!-- 2nd day forecast -->
 
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 id="dayTwoDate">Card title</h5>
-            <p id="dayTwoTemp"></p>
-            <p id="dayTwoHumidity"></p>
-            <p id="dayTwoWind"></p>
-            <p id="dayTwoUv"></p>
-            <p id="dayTwoWeather" class="card-text"></p>
-            <p id="dayTwoIcon"></p>
-            <a href="#" class="card-link">Card link</a>
+        <div class="card col-sm-2 offset-1" style="margin: 1rem;">
+            <div class="card-body">
+                <h5 id="dayTwoDate">Card title</h5>
+                <p id="dayTwoTemp"></p>
+                <p id="dayTwoHumidity"></p>
+                <p id="dayTwoWind"></p>
+                <p id="dayTwoUv"></p>
+                <p id="dayTwoWeather" class="card-text"></p>
+                <p id="dayTwoIcon"></p>
+                <a href="#" class="card-link">Card link</a>
 
+            </div>
         </div>
-    </div>
 
-    <!-- 3rd day forecast -->
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 id="dayThreeDate">Card title</h5>
-            <p id="dayThreeTemp"></p>
-            <p id="dayThreeHumidity"></p>
-            <p id="dayThreeWind"></p>
-            <p id="dayThreeUv"></p>
-            <p id="dayThreeWeather" class="card-text"></p>
-            <p id="dayThreeIcon"></p>
-            <a href="#" class="card-link">Card link</a>
+        <!-- 3rd day forecast -->
+        <div class="card col-sm-2 offset-1" style="margin: 1rem;">
+            <div class="card-body">
+                <h5 id="dayThreeDate">Card title</h5>
+                <p id="dayThreeTemp"></p>
+                <p id="dayThreeHumidity"></p>
+                <p id="dayThreeWind"></p>
+                <p id="dayThreeUv"></p>
+                <p id="dayThreeWeather" class="card-text"></p>
+                <p id="dayThreeIcon"></p>
+                <a href="#" class="card-link">Card link</a>
 
+            </div>
         </div>
-    </div>
 
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 id="dayFourDate">Card title</h5>
-            <p id="dayFourTemp"></p>
-            <p id="dayFourHumidity"></p>
-            <p id="dayFourWind"></p>
-            <p id="dayFourUv"></p>
-            <p id="dayFourWeather" class="card-text"></p>
-            <p id="dayFourIcon"></p>
-            <a href="#" class="card-link">Card link</a>
+        <div class="card col-sm-2 offset-1" style="margin: 1rem;">
+            <div class="card-body">
+                <h5 id="dayFourDate">Card title</h5>
+                <p id="dayFourTemp"></p>
+                <p id="dayFourHumidity"></p>
+                <p id="dayFourWind"></p>
+                <p id="dayFourUv"></p>
+                <p id="dayFourWeather" class="card-text"></p>
+                <p id="dayFourIcon"></p>
+                <a href="#" class="card-link">Card link</a>
 
+            </div>
         </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 id="dayFiveDate">Card title</h5>
-            <p id="dayFiveTemp"></p>
-            <p id="dayFiveHumidity"></p>
-            <p id="dayFiveWind"></p>
-            <p id="dayFiveUv"></p>
-            <p id="dayFiveWeather" class="card-text"></p>
-            <p id="dayFiveIcon"></p>
-            <a href="#" class="card-link">Card link</a>
+        <div class="card col-sm-2 offset-1" style="margin: 1rem;">
+            <div class="card-body">
+                <h5 id="dayFiveDate">Card title</h5>
+                <p id="dayFiveTemp"></p>
+                <p id="dayFiveHumidity"></p>
+                <p id="dayFiveWind"></p>
+                <p id="dayFiveUv"></p>
+                <p id="dayFiveWeather" class="card-text"></p>
+                <p id="dayFiveIcon"></p>
+                <a href="#" class="card-link">Card link</a>
 
+            </div>
         </div>
-    </div>
 
 
 
-    <!-- <div class="component__weather-box">
-        <div class="component__weather-content">
-            <div class="weather-content__overview"></div>
-            <div class="weather-content__temp"></div>
-        </div>
-        <div class="component__forecast-box"></div>
-    </div> -->
 
-    <div id="cityItem"></div>
-    <footer class="mt-5 p-3 text-center bg-light">
-        TheoiOuranioi &copy;
-    </footer>
+        <footer class="mt-5 p-3 text-center bg-light">
+            TheoiOuranioi &copy;
+        </footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-    <!-- <script src="./assets/fetch.js"></script> -->
-    <script src="./assets/weather.js"></script>
+        <!-- <script src="./assets/fetch.js"></script> -->
+        <script src="./assets/weather.js"></script>
 
 </body>
 
