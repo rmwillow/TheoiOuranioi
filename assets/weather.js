@@ -67,33 +67,247 @@ $(document).ready(function() {
                             var dayOneT = "Temperature: " + data.daily[1].temp.day;
                             var dayOneW = "Wind Speed: " + data.daily[1].wind_speed;
                             var dayOneU = "UV Index: " + data.daily[1].uvi;
-                            // if (dayOneU < 7.0) {
-                            //     console.log("the weather is green")
-                            // } else {
-                            //     console.log("the weather is red")
+                            if (dayOneU < 7.0) {
+                                console.log("the weather is green")
+                            } else {
+                                console.log("the weather is red")
 
-                            // }
-                            //add color coding here to new element 
+                            }
+                            // add color coding here to new element 
 
                             var dayOneD = data.daily[1].weather[0].description;
                             var dayOneI = data.daily[1].weather[0].icon;
 
-                            //create array and add day one data to it 
-                            var dayOneData = [];
-                            dayOneData.push(dayOneH, dayOneT, dayOneW, dayOneU, dayOneD, dayOneI)
-                            console.log(dayOneData);
+                            // //create array and add day one data to it 
+                            // var dayOneData = [];
+                            // dayOneData.push(dayOneH, dayOneT, dayOneW, dayOneU, dayOneD, dayOneI)
+                            // console.log(dayOneData);
+
+                            // displays humidity
+                            var dayOneHum = document.getElementById('dayOneHumidity');
+                            dayOneHum.innerHTML = dayOneH;
+
+                            // displays wind
+                            var dayOneWind = document.getElementById('dayOneWind');
+                            dayOneWind.innerHTML = dayOneW;
 
 
+                            // displays uv
+                            var dayOneUv = document.getElementById('dayOneUv');
+                            dayOneUv.innerHTML = dayOneEpoch;
+
+                            // displays date on top of card
                             var dayOneDate = document.getElementById('dayOneDate');
                             dayOneDate.innerHTML = dayOneEpoch;
 
-                            // var dayOneEpoch = new Date();
-                            // document.getElementById("card-date").innerHTML = dayOneEpoch.toLocaleString();
+                            //displays temp
+                            var dayOneTemp = document.getElementById('dayOneTemp');
+                            dayOneTemp.innerHTML = dayOneT;
 
+                            //displays icon
+                            var dayOneIcon = document.getElementById('dayOneIcon');
+                            dayOneIcon.innerHTML = dayOneI;
 
                             //displays the dayonedata
-                            var dayOne = document.getElementById('dayOneWeather');
-                            dayOne.innerHTML = dayOneData;
+                            var dayOneWeather = document.getElementById('dayOneWeather');
+                            dayOneWeather.innerHTML = dayOneW;
+
+
+
+                            //day Two dataset
+                            var dayTwoEpoch = "date: " + new Date(data.daily[2].dt * 1000);
+
+                            console.log(dayTwoD);
+                            var dayTwoH = "Humidity: " + data.daily[2].humidity;
+                            var dayTwoT = "Temperature: " + data.daily[2].temp.day;
+                            var dayTwoW = "Wind Speed: " + data.daily[2].wind_speed;
+                            var dayTwoU = "UV Index: " + data.daily[2].uvi;
+                            if (dayTwoU < 7.0) {
+                                console.log("the weather is green")
+                            } else {
+                                console.log("the weather is red")
+
+                            }
+                            //add color coding here to new element 
+
+                            var dayTwoD = data.daily[2].weather[0].description;
+                            var dayTwoI = data.daily[2].weather[0].icon;
+
+                            // displays humidity
+                            var dayTwoHum = document.getElementById('dayTwoHumidity');
+                            dayTwoHum.innerHTML = dayTwoH;
+
+                            // displays wind
+                            var dayTwoWind = document.getElementById('dayTwoWind');
+                            dayTwoWind.innerHTML = dayTwoW;
+
+
+                            // displays uv
+                            var dayTwoUv = document.getElementById('dayTwoUv');
+                            dayTwoUv.innerHTML = dayTwoEpoch;
+
+                            // displays date on top of card
+                            var dayTwoDate = document.getElementById('dayTwoDate');
+                            dayTwoDate.innerHTML = dayTwoEpoch;
+
+                            //displays temp
+                            var dayTwoTemp = document.getElementById('dayTwoTemp');
+                            dayTwoTemp.innerHTML = dayTwoT;
+
+                            //displays icon
+                            var dayTwoIcon = document.getElementById('dayTwoIcon');
+                            dayTwoIcon.innerHTML = dayTwoI;
+
+                            //displays the dayTwodata
+                            var dayTwoWeather = document.getElementById('dayTwoWeather');
+                            dayTwoWeather.innerHTML = dayTwoW;
+
+                            //day Three
+                            var dayThreeEpoch = "date: " + new Date(data.daily[3].dt * 1000);
+
+                            console.log(dayThreeD);
+                            var dayThreeH = "Humidity: " + data.daily[3].humidity;
+                            var dayThreeT = "Temperature: " + data.daily[3].temp.day;
+                            var dayThreeW = "Wind Speed: " + data.daily[3].wind_speed;
+                            var dayThreeU = "UV Index: " + data.daily[3].uvi;
+                            if (dayThreeU < 7.0) {
+                                console.log("the weather is green")
+                            } else {
+                                console.log("the weather is red")
+
+                            }
+                            //add color coding here to new element 
+
+                            var dayThreeD = data.daily[3].weather[0].description;
+                            var dayThreeI = data.daily[3].weather[0].icon;
+
+                            // displays humidity
+                            var dayThreeHum = document.getElementById('dayThreeHumidity');
+                            dayThreeHum.innerHTML = dayThreeH;
+
+                            // displays wind
+                            var dayThreeWind = document.getElementById('dayThreeWind');
+                            dayThreeWind.innerHTML = dayThreeW;
+
+
+                            // displays uv
+                            var dayThreeUv = document.getElementById('dayThreeUv');
+                            dayThreeUv.innerHTML = dayThreeEpoch;
+
+                            // displays date on top of card
+                            var dayThreeDate = document.getElementById('dayThreeDate');
+                            dayThreeDate.innerHTML = dayThreeEpoch;
+
+                            //displays temp
+                            var dayThreeTemp = document.getElementById('dayThreeTemp');
+                            dayThreeTemp.innerHTML = dayThreeT;
+
+                            //displays icon
+                            var dayThreeIcon = document.getElementById('dayThreeIcon');
+                            dayThreeIcon.innerHTML = dayThreeI;
+
+                            //displays the dayThreedata
+                            var dayThreeWeather = document.getElementById('dayThreeWeather');
+                            dayThreeWeather.innerHTML = dayThreeW;
+
+
+                            //day Four
+                            var dayFourEpoch = "date: " + new Date(data.daily[4].dt * 1000);
+
+                            console.log(dayFourD);
+                            var dayFourH = "Humidity: " + data.daily[4].humidity;
+                            var dayFourT = "Temperature: " + data.daily[4].temp.day;
+                            var dayFourW = "Wind Speed: " + data.daily[4].wind_speed;
+                            var dayFourU = "UV Index: " + data.daily[4].uvi;
+                            if (dayFourU < 7.0) {
+                                console.log("the weather is green")
+                            } else {
+                                console.log("the weather is red")
+
+                            }
+                            //add color coding here to new element 
+
+                            var dayFourD = data.daily[4].weather[0].description;
+                            var dayFourI = data.daily[4].weather[0].icon;
+
+                            // displays humidity
+                            var dayFourHum = document.getElementById('dayFourHumidity');
+                            dayFourHum.innerHTML = dayFourH;
+
+                            // displays wind
+                            var dayFourWind = document.getElementById('dayFourWind');
+                            dayFourWind.innerHTML = dayFourW;
+
+
+                            // displays uv
+                            var dayFourUv = document.getElementById('dayFourUv');
+                            dayFourUv.innerHTML = dayFourEpoch;
+
+                            // displays date on top of card
+                            var dayFourDate = document.getElementById('dayFourDate');
+                            dayFourDate.innerHTML = dayFourEpoch;
+
+                            //displays temp
+                            var dayFourTemp = document.getElementById('dayFourTemp');
+                            dayFourTemp.innerHTML = dayFourT;
+
+                            //displays icon
+                            var dayFourIcon = document.getElementById('dayFourIcon');
+                            dayFourIcon.innerHTML = dayFourI;
+
+                            //displays the dayFourdata
+                            var dayFourWeather = document.getElementById('dayFourWeather');
+                            dayFourWeather.innerHTML = dayFourW;
+
+                            //day Five dataset
+                            var dayFiveEpoch = "date: " + new Date(data.daily[5].dt * 1000);
+
+                            console.log(dayFiveD);
+                            var dayFiveH = "Humidity: " + data.daily[5].humidity;
+                            var dayFiveT = "Temperature: " + data.daily[5].temp.day;
+                            var dayFiveW = "Wind Speed: " + data.daily[5].wind_speed;
+                            var dayFiveU = "UV Index: " + data.daily[5].uvi;
+                            if (dayFiveU < 7.0) {
+                                console.log("the weather is green")
+                            } else {
+                                console.log("the weather is red")
+
+                            }
+                            //add color coding here to new element 
+
+                            var dayFiveD = data.daily[5].weather[0].description;
+                            var dayFiveI = data.daily[5].weather[0].icon;
+
+                            // displays humidity
+                            var dayFiveHum = document.getElementById('dayFiveHumidity');
+                            dayFiveHum.innerHTML = dayFiveH;
+
+                            // displays wind
+                            var dayFiveWind = document.getElementById('dayFiveWind');
+                            dayFiveWind.innerHTML = dayFiveW;
+
+
+                            // displays uv
+                            var dayFiveUv = document.getElementById('dayFiveUv');
+                            dayFiveUv.innerHTML = dayFiveEpoch;
+
+                            // displays date on top of card
+                            var dayFiveDate = document.getElementById('dayFiveDate');
+                            dayFiveDate.innerHTML = dayFiveEpoch;
+
+                            //displays temp
+                            var dayFiveTemp = document.getElementById('dayFiveTemp');
+                            dayFiveTemp.innerHTML = dayFiveT;
+
+                            //displays icon
+                            var dayFiveIcon = document.getElementById('dayFiveIcon');
+                            dayFiveIcon.innerHTML = dayFiveI;
+
+                            //displays the dayFivedata
+                            var dayFiveWeather = document.getElementById('dayFiveWeather');
+                            dayFiveWeather.innerHTML = dayFiveW;
+
+
 
 
                             // var iconImage = document.getElementById("cityTest")
