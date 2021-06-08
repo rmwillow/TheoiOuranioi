@@ -24,7 +24,7 @@ $(document).ready(function() {
                 dataType: "jsonp",
                 //store result in
                 success: function(data) {
-                    // console.log(data);
+                    console.log(data);
                     weatherData = ['']
                     var lat = data.coord.lat;
                     var lon = data.coord.lon;
@@ -67,21 +67,15 @@ $(document).ready(function() {
                             var dayOneT = "Temperature: " + data.daily[1].temp.day;
                             var dayOneW = "Wind Speed: " + data.daily[1].wind_speed;
                             var dayOneU = "UV Index: " + data.daily[1].uvi;
-                            if (dayOneU < 7.0) {
-                                console.log("the weather is green")
+                            if (dayOneU > 7.0) {
+                                document.getElementById("dayOneUv").style.color = "green";
                             } else {
-                                console.log("the weather is red")
+                                document.getElementById("dayOneUv").style.color = "red";
 
                             }
-                            // add color coding here to new element 
 
                             var dayOneD = data.daily[1].weather[0].description;
                             var dayOneI = data.daily[1].weather[0].icon;
-
-                            // //create array and add day one data to it 
-                            // var dayOneData = [];
-                            // dayOneData.push(dayOneH, dayOneT, dayOneW, dayOneU, dayOneD, dayOneI)
-                            // console.log(dayOneData);
 
                             // displays humidity
                             var dayOneHum = document.getElementById('dayOneHumidity');
@@ -94,7 +88,7 @@ $(document).ready(function() {
 
                             // displays uv
                             var dayOneUv = document.getElementById('dayOneUv');
-                            dayOneUv.innerHTML = dayOneEpoch;
+                            dayOneUv.innerHTML = dayOneU;
 
                             // displays date on top of card
                             var dayOneDate = document.getElementById('dayOneDate');
@@ -110,7 +104,7 @@ $(document).ready(function() {
 
                             //displays the dayonedata
                             var dayOneWeather = document.getElementById('dayOneWeather');
-                            dayOneWeather.innerHTML = dayOneW;
+                            dayOneWeather.innerHTML = dayOneD;
 
 
 
@@ -123,9 +117,9 @@ $(document).ready(function() {
                             var dayTwoW = "Wind Speed: " + data.daily[2].wind_speed;
                             var dayTwoU = "UV Index: " + data.daily[2].uvi;
                             if (dayTwoU < 7.0) {
-                                console.log("the weather is green")
+                                document.getElementById("dayTwoUv").style.color = "green";
                             } else {
-                                console.log("the weather is red")
+                                document.getElementById("dayTwoUv").style.color = "red";
 
                             }
                             //add color coding here to new element 
@@ -144,7 +138,7 @@ $(document).ready(function() {
 
                             // displays uv
                             var dayTwoUv = document.getElementById('dayTwoUv');
-                            dayTwoUv.innerHTML = dayTwoEpoch;
+                            dayTwoUv.innerHTML = dayTwoU;
 
                             // displays date on top of card
                             var dayTwoDate = document.getElementById('dayTwoDate');
@@ -160,7 +154,7 @@ $(document).ready(function() {
 
                             //displays the dayTwodata
                             var dayTwoWeather = document.getElementById('dayTwoWeather');
-                            dayTwoWeather.innerHTML = dayTwoW;
+                            dayTwoWeather.innerHTML = dayTwoD;
 
                             //day Three
                             var dayThreeEpoch = "date: " + new Date(data.daily[3].dt * 1000);
@@ -171,10 +165,9 @@ $(document).ready(function() {
                             var dayThreeW = "Wind Speed: " + data.daily[3].wind_speed;
                             var dayThreeU = "UV Index: " + data.daily[3].uvi;
                             if (dayThreeU < 7.0) {
-                                console.log("the weather is green")
+                                document.getElementById("dayThreeUv").style.color = "green";
                             } else {
-                                console.log("the weather is red")
-
+                                document.getElementById("dayThreeUv").style.color = "red";
                             }
                             //add color coding here to new element 
 
@@ -192,7 +185,7 @@ $(document).ready(function() {
 
                             // displays uv
                             var dayThreeUv = document.getElementById('dayThreeUv');
-                            dayThreeUv.innerHTML = dayThreeEpoch;
+                            dayThreeUv.innerHTML = dayThreeU;
 
                             // displays date on top of card
                             var dayThreeDate = document.getElementById('dayThreeDate');
@@ -208,7 +201,7 @@ $(document).ready(function() {
 
                             //displays the dayThreedata
                             var dayThreeWeather = document.getElementById('dayThreeWeather');
-                            dayThreeWeather.innerHTML = dayThreeW;
+                            dayThreeWeather.innerHTML = dayThreeD;
 
 
                             //day Four
@@ -219,10 +212,11 @@ $(document).ready(function() {
                             var dayFourT = "Temperature: " + data.daily[4].temp.day;
                             var dayFourW = "Wind Speed: " + data.daily[4].wind_speed;
                             var dayFourU = "UV Index: " + data.daily[4].uvi;
+                            console.log(dayFourU);
                             if (dayFourU < 7.0) {
-                                console.log("the weather is green")
+                                document.getElementById("dayFourUv").style.color = "green";
                             } else {
-                                console.log("the weather is red")
+                                document.getElementById("dayFourUv").style.color = "red";
 
                             }
                             //add color coding here to new element 
@@ -241,7 +235,7 @@ $(document).ready(function() {
 
                             // displays uv
                             var dayFourUv = document.getElementById('dayFourUv');
-                            dayFourUv.innerHTML = dayFourEpoch;
+                            dayFourUv.innerHTML = dayFourU;
 
                             // displays date on top of card
                             var dayFourDate = document.getElementById('dayFourDate');
@@ -257,7 +251,7 @@ $(document).ready(function() {
 
                             //displays the dayFourdata
                             var dayFourWeather = document.getElementById('dayFourWeather');
-                            dayFourWeather.innerHTML = dayFourW;
+                            dayFourWeather.innerHTML = dayFourD;
 
                             //day Five dataset
                             var dayFiveEpoch = "date: " + new Date(data.daily[5].dt * 1000);
@@ -268,9 +262,9 @@ $(document).ready(function() {
                             var dayFiveW = "Wind Speed: " + data.daily[5].wind_speed;
                             var dayFiveU = "UV Index: " + data.daily[5].uvi;
                             if (dayFiveU < 7.0) {
-                                console.log("the weather is green")
+                                document.getElementById("dayFiveUv").style.color = "green";
                             } else {
-                                console.log("the weather is red")
+                                document.getElementById("dayFiveUv").style.color = "red";
 
                             }
                             //add color coding here to new element 
@@ -289,7 +283,7 @@ $(document).ready(function() {
 
                             // displays uv
                             var dayFiveUv = document.getElementById('dayFiveUv');
-                            dayFiveUv.innerHTML = dayFiveEpoch;
+                            dayFiveUv.innerHTML = dayFiveU;
 
                             // displays date on top of card
                             var dayFiveDate = document.getElementById('dayFiveDate');
@@ -305,7 +299,7 @@ $(document).ready(function() {
 
                             //displays the dayFivedata
                             var dayFiveWeather = document.getElementById('dayFiveWeather');
-                            dayFiveWeather.innerHTML = dayFiveW;
+                            dayFiveWeather.innerHTML = dayFiveD;
 
 
 
