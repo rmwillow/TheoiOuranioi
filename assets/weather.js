@@ -5,7 +5,8 @@ $(document).ready(function() {
 
 
 
-
+        //array of all citys 
+        // get and set like highscores project
 
         //check field is not empty
         if (city != '') {
@@ -69,12 +70,15 @@ $(document).ready(function() {
 
                             var dayOneEpoch = new Date(data.daily[1].dt * 1000);
 
-                            console.log(dayOneD);
+
                             var dayOneH = "Humidity: " + data.daily[1].humidity;
                             var dayOneT = "Temperature: " + data.daily[1].temp.day;
                             var dayOneW = "Wind Speed: " + data.daily[1].wind_speed;
-                            var dayOneU = "UV Index: " + data.daily[1].uvi;
-                            if (dayOneU > 7.0) {
+                            var dayOneUV = "UV Index: " + data.daily[1].uvi;
+
+                            var dayOneUV = data.daily[4].uvi;
+                            var dayOneU = parseInt(dayOneUV);
+                            if (dayOneU < 5) {
                                 document.getElementById("dayOneUv").style.color = "green";
                             } else {
                                 document.getElementById("dayOneUv").style.color = "red";
@@ -98,7 +102,7 @@ $(document).ready(function() {
 
                             // displays uv
                             var dayOneUv = document.getElementById('dayOneUv');
-                            dayOneUv.innerHTML = dayOneU;
+                            dayOneUv.innerHTML = "UV Index:" + dayOneU;
 
                             // displays date on top of card
                             var dayOneDate = document.getElementById('dayOneDate');
@@ -123,12 +127,15 @@ $(document).ready(function() {
                             //day Two dataset
                             var dayTwoEpoch = new Date(data.daily[2].dt * 1000);
 
-                            console.log(dayTwoD);
+
                             var dayTwoH = "Humidity: " + data.daily[2].humidity;
                             var dayTwoT = "Temperature: " + data.daily[2].temp.day;
                             var dayTwoW = "Wind Speed: " + data.daily[2].wind_speed;
-                            var dayTwoU = "UV Index: " + data.daily[2].uvi;
-                            if (dayTwoU < 7.0) {
+                            var dayTwoUV = "UV Index: " + data.daily[2].uvi;
+
+                            var dayTwoUV = data.daily[4].uvi;
+                            var dayTwoU = parseInt(dayTwoUV);
+                            if (dayTwoU < 5) {
                                 document.getElementById("dayTwoUv").style.color = "green";
                             } else {
                                 document.getElementById("dayTwoUv").style.color = "red";
@@ -150,7 +157,7 @@ $(document).ready(function() {
 
                             // displays uv
                             var dayTwoUv = document.getElementById('dayTwoUv');
-                            dayTwoUv.innerHTML = dayTwoU;
+                            dayTwoUv.innerHTML = "UV Index:" + dayTwoU;
 
                             // displays date on top of card
                             var dayTwoDate = document.getElementById('dayTwoDate');
@@ -171,12 +178,14 @@ $(document).ready(function() {
                             //day Three
                             var dayThreeEpoch = new Date(data.daily[3].dt * 1000);
 
-                            console.log(dayThreeD);
+
                             var dayThreeH = "Humidity: " + data.daily[3].humidity;
                             var dayThreeT = "Temperature: " + data.daily[3].temp.day;
                             var dayThreeW = "Wind Speed: " + data.daily[3].wind_speed;
-                            var dayThreeU = "UV Index: " + data.daily[3].uvi;
-                            if (dayThreeU < 7.0) {
+                            var dayThreeUV = "UV Index: " + data.daily[3].uvi;
+                            var dayThreeUV = data.daily[4].uvi;
+                            var dayThreeU = parseInt(dayThreeUV);
+                            if (dayThreeU < 5) {
                                 document.getElementById("dayThreeUv").style.color = "green";
                             } else {
                                 document.getElementById("dayThreeUv").style.color = "red";
@@ -197,7 +206,9 @@ $(document).ready(function() {
 
                             // displays uv
                             var dayThreeUv = document.getElementById('dayThreeUv');
-                            dayThreeUv.innerHTML = dayThreeU;
+                            dayThreeUv.innerHTML = "UV Index:" + dayThreeU;
+
+
 
                             // displays date on top of card
                             var dayThreeDate = document.getElementById('dayThreeDate');
@@ -222,14 +233,16 @@ $(document).ready(function() {
                             //day Four
                             var dayFourEpoch = new Date(data.daily[4].dt * 1000);
 
-                            console.log(dayFourD);
+
                             var dayFourH = "Humidity: " + data.daily[4].humidity;
                             var dayFourT = "Temperature: " + data.daily[4].temp.day;
                             var dayFourW = "Wind Speed: " + data.daily[4].wind_speed;
-                            var dayFourU = "UV Index: " + data.daily[4].uvi;
-                            console.log(dayFourU);
-                            if (dayFourU < 7.0) {
+                            var dayFourUV = data.daily[4].uvi;
+                            var dayFourU = parseInt(dayFourUV);
+
+                            if (dayFourU < 5) {
                                 document.getElementById("dayFourUv").style.color = "green";
+
                             } else {
                                 document.getElementById("dayFourUv").style.color = "red";
 
@@ -250,7 +263,7 @@ $(document).ready(function() {
 
                             // displays uv
                             var dayFourUv = document.getElementById('dayFourUv');
-                            dayFourUv.innerHTML = dayFourU;
+                            dayFourUv.innerHTML = "UV Index:" + dayFourU;
 
                             // displays date on top of card
                             var dayFourDate = document.getElementById('dayFourDate');
@@ -273,12 +286,16 @@ $(document).ready(function() {
                             //day Five dataset
                             var dayFiveEpoch = new Date(data.daily[5].dt * 1000);
 
-                            console.log(dayFiveD);
+
                             var dayFiveH = "Humidity: " + data.daily[5].humidity;
                             var dayFiveT = "Temperature: " + data.daily[5].temp.day;
                             var dayFiveW = "Wind Speed: " + data.daily[5].wind_speed;
-                            var dayFiveU = "UV Index: " + data.daily[5].uvi;
-                            if (dayFiveU < 7.0) {
+                            var dayFiveUV = data.daily[5].uvi;
+                            console.log(dayFiveUV);
+
+                            var dayFiveU = parseInt(dayFiveUV);
+                            console.log(dayFiveU);
+                            if (dayFiveU < 5) {
                                 document.getElementById("dayFiveUv").style.color = "green";
                             } else {
                                 document.getElementById("dayFiveUv").style.color = "red";
@@ -300,7 +317,7 @@ $(document).ready(function() {
 
                             // displays uv
                             var dayFiveUv = document.getElementById('dayFiveUv');
-                            dayFiveUv.innerHTML = dayFiveU;
+                            dayFiveUv.innerHTML = "UV Index:" + dayFiveU;
 
                             // displays date on top of card
                             var dayFiveDate = document.getElementById('dayFiveDate');
@@ -325,7 +342,59 @@ $(document).ready(function() {
             })
         }
 
+        // function saveUn() {
+        //     // var cityName = document.getElementById('searchCity').value;
+        //     var btn = document.createElement("BUTTON");
+        //     btn.innerHTML = city; // Insert text
 
+
+        //     document.body.appendChild(btn);
+        //     // document.getElementById("cityItem").appendChild(btn);
+
+
+        //     // const cityList = [];
+        //     // cityList.push(cityName)
+        //     // console.log(cityList);
+        // }
+        // saveUn();
+
+        // function saveUn() {
+        //     var btn = document.createElement("button");
+
+        //     btn.innerHTML = city; // Insert text
+
+
+
+        //     document.getElementById("cityItem").appendChild(btn)
+        //         // btn.addClass('btn btn-primary');
+        //     document.getElementById("cityItem").className = "btn btn-primary";
+
+        //     // // Clear previous data
+        //     window.clearPreviousData();
+
+        //     $('#cityItem').empty();
+
+        //     // // Prevent the form submiting data
+        //     window.preventDefault();
+        // }
+
+        // saveUn();
+        // localStorage.setItem('searchCity', city);
+        // localStorage.getItem('searchCity');
+        // const cityNameSet = []
+        // cityNameSet.push(city);
+        // localStorage.setItem('add-city', cityNameSet);
+        // console.log(cityNameSet);
+        // for (let cityNameSet = 0; cityNameSet < 5; cityNameSet++) {
+        //     // Runs 5 times, with values of step 0 through 4.
+        //     console.log('Walking east one step');
+        // }
+        // function myFunction() {
+        //     var x = document.createElement("INPUT");
+        //     x.setAttribute("type", "button");
+        //     x.setAttribute("value", "Click me");
+        //     document.body.appendChild(x);
+        //   }
 
         function renderCityName(city) {
             // Empties out the html
@@ -335,13 +404,12 @@ $(document).ready(function() {
             // Creates a new variable 'cityItem' that will hold a "<button>" tag
             // Sets the `list` item's value as text of this <p> element
             var cityItem = $('<button>');
-            cityItem.text(city);
-
+            cityItem.text("Weather For " + city);
 
 
             // Creates a button `toDoClose` with an attribute called `dataCity` and a unique `id`
-            // var toDoClose = $('<button>');
-            // toDoClose.attr('dataCity', city);
+            var toDoClose = $('<button>');
+            toDoClose.attr('dataCity', city);
 
             // Gives the button a class called 'checkbox'
             cityItem.addClass('btn btn-primary');
@@ -356,26 +424,33 @@ $(document).ready(function() {
             event.preventDefault();
 
             // Get the to-do "value" from the textbox and store it as a variable using `.val()` and `.trim()`
-            var cityTask = $('#searchCity')
+            var cityTask = $('#add-city')
                 .val()
                 .trim();
 
             // // Add the new to-do to our local 'city' variable
-            // city.push(cityTask);
+            city.push(cityTask);
 
             // // Update the cityItem on the page
-            // renderCityName(city);
+            renderCityName(city);
 
             // Save the cityItem into localStorage
             // We need to use JSON.stringify to turn the city from an array into a string
-            localStorage.setItem('searchCity', JSON.stringify(city));
+            localStorage.setItem('add-city', JSON.stringify(city));
 
             // Clear the textbox when done using `.val()`
-            $('#searchCity').val('');
-        });
+            $('#add-city').val('');
+
+            // // Clear previous data
+            window.clearPreviousData();
+
+            // // Prevent the form submiting data
+            window.preventDefault();
+            // });
+
+
+
+        })
         renderCityName(city);
-
-
     })
-
 });

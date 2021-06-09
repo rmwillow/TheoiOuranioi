@@ -19,24 +19,29 @@
         </div>
     </nav>
     <div class="row justify-content-center">
-        <div class="col-sm-6 ">
-            <div class="container searchContainer">
-                <div class="search card card-body">
-                    <h1>Search for a city:</h1>
-                    <span id="error"></span>
 
-                    <form>
-                        <span id="city-item">Search for a city:
+        <div class="card col-sm-5 offset-1" style="margin: 1rem;">
+            <div class="card-body ">
+                <h1>Search for a city:</h1>
+                <span id="error"></span>
+                <form>
+                    <span id="city-item">Search for a city:
                              <input id="searchCity" type="text" class="form-control" placeholder="Location"/><br /><input
                             id="add-city"
                             value="Search"
-                            type="button" class="btn btn-primary" id="submit"
+                            type="button" 
+                            class="btn btn-primary" 
+                            id="submit" 
+                            
                         /></span>
-                    </form>
+                </form>
+                <!-- onclick="saveUn();" -->
+                <br />
+                <div id="cityItem">
+
                 </div>
             </div>
-            <br />
-            <div id="cityItem"></div>
+
         </div>
 
 
