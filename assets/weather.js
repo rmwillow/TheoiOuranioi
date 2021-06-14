@@ -37,6 +37,7 @@ $(document).ready(function() {
         //     })
 
         function myFunction() {
+
             // Create a letiable called `searchTerm` that will use `document.querySelector()` to target the `id` of the input
             // Use `.value` to capture the value of the input and store it in the letiable
             let searchTerm = document.querySelector('#searchCity').value;
@@ -55,8 +56,6 @@ $(document).ready(function() {
                     // Create a letiable that will select the <div> where the GIF will be displayed
                     let responseContainerEl = document.getElementById('cityContainer');
 
-
-
                     let cityBtn = document.createElement("BUTTON");
 
                     cityBtn.setAttribute('src', cityName);
@@ -67,11 +66,16 @@ $(document).ready(function() {
                     console.log('typeof cityStor: ' + typeof cityStor);
                     console.log(cityStor);
 
-                    cityBtn.className = "btn btn-secondary"
+                    cityBtn.className = "btn btn-secondary btn-lg btn-block"
 
                     // Append 'gifImg' to the <div>
                     responseContainerEl.appendChild(cityBtn);
+
                 });
+
+            document.getElementById("BUTTON").onclick = function() {
+                location.href = assets / cities.js
+            };
         }
         myFunction();
 
