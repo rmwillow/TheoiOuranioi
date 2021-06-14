@@ -9,32 +9,7 @@ $(document).ready(function() {
         //that also stores that data in local storage 
         //create another function for when you click on button it makes another fetch using that city 
 
-        // function myFunction() {
-        //     let searchTerm = document.getElementById('searchCity').value;
-        // Create a letiable to hold the value of rating
 
-        // $('button').click(function() {
-        //         let searchCity = $("#searchCity").val();
-
-        //         //
-        //         fetch(
-        //                 `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&units=imperial&APPID=81cbd7d0addf7aa0b0d00ff1784d04b2`
-
-        //                 // Add the rating parameter
-        //                 // Remember to add your API key
-        //             )
-        //             .then(function(response) {
-        //                 return response.json();
-        //             })
-        //             .then(function(response) {
-        //                 console.log(response);
-        //                 let responseContainerEl = document.querySelector('#cityContainer');
-        //                 responseContainerEl.innerHTML = '';
-        //                 let cityBtn = document.createElement('btn');
-        //                 cityBtn.setAttribute('src', response.name);
-        //                 responseContainerEl.appendChild(cityBtn);
-        //             })
-        //     })
 
         function myFunction() {
 
@@ -53,7 +28,7 @@ $(document).ready(function() {
                 .then(function(response) {
                     console.log(response.name);
                     let cityName = response.name;
-                    // Create a letiable that will select the <div> where the GIF will be displayed
+                    // Create a letiable that will select the <div> where the city will be displayed
                     let responseContainerEl = document.getElementById('cityContainer');
 
                     let cityBtn = document.createElement("BUTTON");
@@ -67,15 +42,19 @@ $(document).ready(function() {
                     console.log(cityStor);
 
                     cityBtn.className = "btn btn-secondary btn-lg btn-block"
+                        // cityBtn.setAttribute("href", "http://www.w3schools.com");
+                        // cityBtn.value = city;
+
 
                     // Append 'gifImg' to the <div>
                     responseContainerEl.appendChild(cityBtn);
 
+
+
+
+
                 });
 
-            document.getElementById("BUTTON").onclick = function() {
-                location.href = assets / cities.js
-            };
         }
         myFunction();
 
@@ -437,6 +416,11 @@ $(document).ready(function() {
                             getDayFour();
                             getDayFive();
                             localStorage.setItem('weatherData', getDayOne);
+                            document.getElementById('cityContainer').onclick = function() {
+                                alert("button was clicked");
+                                document.getElementById("clearData").innerHTML = "";
+                            };
+
 
 
                         }
@@ -449,113 +433,5 @@ $(document).ready(function() {
 
         }
 
-
-        //     function renderCityName(city) {
-        //         // Empties out the html
-        //         $('#cityItem').empty();
-        //         // console.log(city);
-        //
-        //         // Creates a new letiable 'cityItem' that will hold a "<button>" tag
-        //         // Sets the `list` item's value as text of this <p> element
-        //         let cityItem = $('<button>');
-        //         cityItem.text("Weather For " + city);
-        //
-        //
-        //         // Creates a button `toDoClose` with an attribute called `dataCity` and a unique `id`
-        //         let toDoClose = $('<button>');
-        //         toDoClose.attr('dataCity', city);
-        //
-        //         // Gives the button a class called 'checkbox'
-        //         cityItem.addClass('btn btn-primary');
-        //
-        //
-        //         // Adds 'cityItem' to the To-Do city div
-        //         $('#cityItem').append(cityItem);
-        //
-        //     }
-        //
-        //     $('#add-city').on('click', function(event) {
-        //         event.preventDefault();
-        //
-        //         // Get the to-do "value" from the textbox and store it as a letiable using `.val()` and `.trim()`
-        //         let cityTask = $('#add-city')
-        //             .val()
-        //             .trim();
-        //
-        //         // // Add the new to-do to our local 'city' letiable
-        //         city.push(cityTask);
-        //
-        //         // // Update the cityItem on the page
-        //         renderCityName(city);
-        //
-        //         // Save the cityItem into localStorage
-        //         // We need to use JSON.stringify to turn the city from an array into a string
-        //         localStorage.setItem('add-city', JSON.stringify(city));
-        //
-        //         // Clear the textbox when done using `.val()`
-        //         $('#add-city').val('');
-        //
-        //         // // Clear previous data
-        //         window.clearPreviousData();
-        //
-        //         // // Prevent the form submiting data
-        //         window.preventDefault();
-        //         // });
-        //
-        //
-        //
-        //     })
-        //     renderCityName(city);
     })
-
-    // document.querySelector('.btn').addEventListener('click', function() {
-
-    //     const message = (document.querySelector('.message').value);
-    //     console.log(message);
-    //     retrievedObject = [];
-
-    //     console.log(retrievedObject);
-
-
-    //     let savedCities = {
-    //         name: document.getElementById('searchCity').value
-    //     }
-
-    //     retrievedObject.push(savedCities);
-    //     console.log(savedCities);
-
-
-    //     localStorage.getItem('searchCity');
-    //     localStorage.setItem('cityMessage', JSON.stringify(savedCities));
-    //     //    document.addEventListener('DOMContentLoaded', () => {})
-
-    //     document.querySelector('.cityMessage').textContent = savedCities;
-
-    // });
-});
-
-
-
-
-// forEach((message, value) => {
-
-
-
-
-//     // localStorage.setItem('cityMessage', JSON.stringify(retrievedObject));
-
-//     let storedCity = localStorage.getItem('cityMessage');
-//     console.log(storedCity)
-
-// })
-
-// if (retrievedObject === null) {
-//     retrievedObject = [];
-// } else {
-//     retrievedObject = JSON.parse(retrievedObject)
-// }
-
-
-
-
-// Retrieve the object from storage
+})
