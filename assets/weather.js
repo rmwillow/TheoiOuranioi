@@ -1,11 +1,29 @@
 $(document).ready(function() {
     $('#add-city').click(function() {
         let city = $("#searchCity").val();
-        console.log(city)
 
+        // clear all old icons
+        function clearIcons() {
+            let clearCurrent = document.getElementById("currentIcon");
+            clearCurrent.innerText = "";
 
+            let clearDayOne = document.getElementById("dayOneIcon");
+            clearDayOne.innerText = "";
 
+            let clearDayTwo = document.getElementById("dayTwoIcon");
+            clearDayTwo.innerText = "";
 
+            let clearDayThree = document.getElementById("dayThreeIcon");
+            clearDayThree.innerText = "";
+
+            let clearDayFour = document.getElementById("dayFourIcon");
+            clearDayFour.innerText = "";
+
+            let clearDayFive = document.getElementById("dayFiveIcon");
+            clearDayFive.innerText = "";
+        }
+
+        clearIcons();
 
         //check field is not empty
         if (city != '') {
@@ -22,7 +40,6 @@ $(document).ready(function() {
 
                     function getCurrentDay() {
                         let dateEpoched = new Date(data.dt * 1000);
-                        console.log(dateEpoched);
                         let temp = "Temperature: " + data.main.temp;
                         let desc = "Description: " + data.weather[0].description;
                         let hum = "Humidity: " + data.main.humidity;
@@ -68,7 +85,6 @@ $(document).ready(function() {
                                     document.getElementById("dayOneUv").style.color = "green";
                                 } else {
                                     document.getElementById("dayOneUv").style.color = "red";
-
                                 }
                                 let dayOneD = data.daily[1].weather[0].description;
                                 let dayOneI = data.daily[1].weather[0].icon;
@@ -109,13 +125,11 @@ $(document).ready(function() {
                                 let dayTwoT = "Temperature: " + data.daily[2].temp.day;
                                 let dayTwoW = "Wind Speed: " + data.daily[2].wind_speed;
                                 let dayTwoUV = "UV Index: " + data.daily[2].uvi;
-
                                 let dayTwoU = parseInt(dayTwoUV);
                                 if (dayTwoU < 5) {
                                     document.getElementById("dayTwoUv").style.color = "green";
                                 } else {
                                     document.getElementById("dayTwoUv").style.color = "red";
-
                                 }
                                 let dayTwoD = data.daily[2].weather[0].description;
                                 let dayTwoI = data.daily[2].weather[0].icon;
@@ -127,7 +141,6 @@ $(document).ready(function() {
                                 // displays wind
                                 let dayTwoWind = document.getElementById('dayTwoWind');
                                 dayTwoWind.innerHTML = dayTwoW;
-
 
                                 // displays uv
                                 let dayTwoUv = document.getElementById('dayTwoUv');
@@ -206,10 +219,8 @@ $(document).ready(function() {
                                 let dayFourU = parseInt(dayFourUV);
                                 if (dayFourU < 5) {
                                     document.getElementById("dayFourUv").style.color = "green";
-
                                 } else {
                                     document.getElementById("dayFourUv").style.color = "red";
-
                                 }
                                 let dayFourD = data.daily[4].weather[0].description;
                                 let dayFourI = data.daily[4].weather[0].icon;
@@ -252,12 +263,10 @@ $(document).ready(function() {
                                 let dayFiveW = "Wind Speed: " + data.daily[5].wind_speed;
                                 let dayFiveUV = data.daily[5].uvi;
                                 let dayFiveU = parseInt(dayFiveUV);
-                                console.log(dayFiveU);
                                 if (dayFiveU < 5) {
                                     document.getElementById("dayFiveUv").style.color = "green";
                                 } else {
                                     document.getElementById("dayFiveUv").style.color = "red";
-
                                 }
                                 let dayFiveD = data.daily[5].weather[0].description;
                                 let dayFiveI = data.daily[5].weather[0].icon;
@@ -297,10 +306,6 @@ $(document).ready(function() {
                             getDayThree();
                             getDayFour();
                             getDayFive();
-                            localStorage.setItem('weatherData', getDayOne);
-
-
-
 
                             //city button function data
                             function cityButtons() {
@@ -312,7 +317,6 @@ $(document).ready(function() {
                                         return response.json();
                                     })
                                     .then(function(response) {
-                                        console.log(response.name);
                                         let cityName = response.name;
                                         // Create a iterable that will select the <div> where the city will be displayed
                                         let responseContainerEl = document.getElementById('cityContainer');
@@ -324,47 +328,25 @@ $(document).ready(function() {
                                         cityBtn.onclick = function() {
                                             //  get value of button
                                             let oldCityName = cityBtn.innerHTML;
-                                            //clear icon data
-                                            let clearCurrent = document.getElementById("currentIcon");
-                                            clearCurrent.innerText = "";
-
-                                            let clearDayOne = document.getElementById("dayOneIcon");
-                                            clearDayOne.innerText = "";
-
-                                            let clearDayTwo = document.getElementById("dayTwoIcon");
-                                            clearDayTwo.innerText = "";
-
-                                            let clearDayThree = document.getElementById("dayThreeIcon");
-                                            clearDayThree.innerText = "";
-
-                                            let clearDayFour = document.getElementById("dayFourIcon");
-                                            clearDayFour.innerText = "";
-
-                                            let clearDayFive = document.getElementById("dayFiveIcon");
-                                            clearDayFive.innerText = "";
-
-                                            //use button value to generate that data dynamically
-                                            //call all dynamic data functions
                                             console.log(oldCityName);
+                                            //call all dynamic data functions
+                                            clearIcons();
                                             getCurrentDay();
                                             getDayOne();
                                             getDayTwo();
                                             getDayThree();
                                             getDayFour();
                                             getDayFive();
-
                                         };
 
                                         localStorage.setItem('city', JSON.stringify(cityName));
                                         let cityStor = localStorage.getItem('city');
-                                        console.log('typeof cityStor: ' + typeof cityStor);
                                         cityBtn.className = "btn btn-secondary btn-lg btn-block"
                                             // Append to the button
                                         responseContainerEl.appendChild(cityBtn);
                                     });
                             }
                             cityButtons();
-
                         }
                     });
                 }
