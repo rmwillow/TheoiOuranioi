@@ -79,7 +79,7 @@ $(document).ready(function() {
                                 let dayOneH = "Humidity: " + data.daily[1].humidity;
                                 let dayOneT = "Temperature: " + data.daily[1].temp.day;
                                 let dayOneW = "Wind Speed: " + data.daily[1].wind_speed;
-                                let dayOneUV = "UV Index: " + data.daily[1].uvi;
+                                let dayOneUV = data.daily[1].uvi;
                                 let dayOneU = parseInt(dayOneUV);
                                 if (dayOneU < 5) {
                                     document.getElementById("dayOneUv").style.color = "green";
@@ -124,7 +124,7 @@ $(document).ready(function() {
                                 let dayTwoH = "Humidity: " + data.daily[2].humidity;
                                 let dayTwoT = "Temperature: " + data.daily[2].temp.day;
                                 let dayTwoW = "Wind Speed: " + data.daily[2].wind_speed;
-                                let dayTwoUV = "UV Index: " + data.daily[2].uvi;
+                                let dayTwoUV = data.daily[2].uvi;
                                 let dayTwoU = parseInt(dayTwoUV);
                                 if (dayTwoU < 5) {
                                     document.getElementById("dayTwoUv").style.color = "green";
@@ -169,7 +169,7 @@ $(document).ready(function() {
                                 let dayThreeH = "Humidity: " + data.daily[3].humidity;
                                 let dayThreeT = "Temperature: " + data.daily[3].temp.day;
                                 let dayThreeW = "Wind Speed: " + data.daily[3].wind_speed;
-                                let dayThreeUV = "UV Index: " + data.daily[3].uvi;
+                                let dayThreeUV = data.daily[3].uvi;
                                 let dayThreeU = parseInt(dayThreeUV);
                                 if (dayThreeU < 5) {
                                     document.getElementById("dayThreeUv").style.color = "green";
