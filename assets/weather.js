@@ -3,22 +3,8 @@ $(document).ready(function() {
         let city = $("#searchCity").val();
         console.log(city)
 
-
-        //how to link that city !!!
-        //create function to create new button with city name
-        //that also stores that data in local storage 
-        //create another function for when you click on button it makes another fetch using that city 
-
-
-
         function myFunction() {
-
-            // Create a letiable called `searchTerm` that will use `document.querySelector()` to target the `id` of the input
-            // Use `.value` to capture the value of the input and store it in the letiable
             let searchTerm = document.querySelector('#searchCity').value;
-
-            // Make a `fetch` request concatenating the `searchTerm` to the query URL
-            // Remember to add your API key at the end
             fetch(
                     `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=imperial&APPID=81cbd7d0addf7aa0b0d00ff1784d04b2`
                 )
@@ -28,44 +14,23 @@ $(document).ready(function() {
                 .then(function(response) {
                     console.log(response.name);
                     let cityName = response.name;
-                    // Create a letiable that will select the <div> where the city will be displayed
+                    // Create a iterable that will select the <div> where the city will be displayed
                     let responseContainerEl = document.getElementById('cityContainer');
-
                     let cityBtn = document.createElement("BUTTON");
-
                     cityBtn.setAttribute('src', cityName);
                     cityBtn.textContent = cityName;
-
                     localStorage.setItem('city', JSON.stringify(cityName));
                     let cityStor = localStorage.getItem('city');
                     console.log('typeof cityStor: ' + typeof cityStor);
-                    console.log(cityStor);
-
                     cityBtn.className = "btn btn-secondary btn-lg btn-block"
-                        // cityBtn.setAttribute("href", "http://www.w3schools.com");
-                        // cityBtn.value = city;
-
-
-                    // Append 'gifImg' to the <div>
+                        // Append to the button
                     responseContainerEl.appendChild(cityBtn);
-
-
-
-
-
                 });
-
         }
         myFunction();
 
-        //array of all citys 
-        // get and set like highscores project
-
         //check field is not empty
         if (city != '') {
-
-
-
             $.ajax({
                 //fetch data
                 url: 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial' + '&APPID=81cbd7d0addf7aa0b0d00ff1784d04b2',
@@ -74,14 +39,10 @@ $(document).ready(function() {
                 //store result in
                 success: function(data) {
                     // console.log(data);
-
                     let lat = data.coord.lat;
                     let lon = data.coord.lon;
-                    // console.log(lat, lon, "latlong console");
-                    // let date = data.dt;
 
                     function getCurrentDay() {
-
                         let dateEpoched = new Date(data.dt * 1000);
                         console.log(dateEpoched);
                         let temp = "Temperature: " + data.main.temp;
@@ -90,13 +51,11 @@ $(document).ready(function() {
                         let winds = "Wind Speed: " + data.wind.speed;
                         let icons = data.weather[0].icon;
 
-
                         let currentD = document.getElementById('currentWeather');
                         currentD.innerHTML = desc;
 
                         let currentDate = document.getElementById('currentDate');
                         currentDate.innerHTML = dateEpoched;
-
 
                         let currentT = document.getElementById('currentTemp');
                         currentT.innerHTML = temp;
@@ -107,15 +66,12 @@ $(document).ready(function() {
                         let currentW = document.getElementById('currentWind');
                         currentW.innerHTML = winds;
 
-
                         let img = document.createElement('img');
                         img.src = 'http://openweathermap.org/img/wn/' + icons + '.png';
                         document.getElementById('currentIcon').appendChild(img);
                     }
 
-
                     getCurrentDay();
-                    // console.log(weatherData);
                     $.ajax({
                         //fetch data
                         url: `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=81cbd7d0addf7aa0b0d00ff1784d04b2` + '&units=imperial',
@@ -123,22 +79,12 @@ $(document).ready(function() {
                         dataType: "jsonp",
                         //store result in
                         success: function(data) {
-                            // console.log(data);
-
-
-
-                            // dayOneEpoch = new Date(data.daily[1].dt * 1000);
                             function getDayOne() {
-
                                 let dayOneEpoch = new Date(data.daily[1].dt * 1000);
-
-
                                 let dayOneH = "Humidity: " + data.daily[1].humidity;
                                 let dayOneT = "Temperature: " + data.daily[1].temp.day;
                                 let dayOneW = "Wind Speed: " + data.daily[1].wind_speed;
                                 let dayOneUV = "UV Index: " + data.daily[1].uvi;
-
-                                // let dayOneUV = data.daily[4].uvi;
                                 let dayOneU = parseInt(dayOneUV);
                                 if (dayOneU < 5) {
                                     document.getElementById("dayOneUv").style.color = "green";
@@ -146,12 +92,8 @@ $(document).ready(function() {
                                     document.getElementById("dayOneUv").style.color = "red";
 
                                 }
-
                                 let dayOneD = data.daily[1].weather[0].description;
                                 let dayOneI = data.daily[1].weather[0].icon;
-
-
-
 
                                 // displays humidity
                                 let dayOneHum = document.getElementById('dayOneHumidity');
@@ -160,7 +102,6 @@ $(document).ready(function() {
                                 // displays wind
                                 let dayOneWind = document.getElementById('dayOneWind');
                                 dayOneWind.innerHTML = dayOneW;
-
 
                                 // displays uv
                                 let dayOneUv = document.getElementById('dayOneUv');
@@ -179,25 +120,18 @@ $(document).ready(function() {
                                 dayOneImg.src = 'http://openweathermap.org/img/wn/' + dayOneI + '.png';
                                 document.getElementById('dayOneIcon').appendChild(dayOneImg);
 
-
                                 //displays the dayonedata
                                 let dayOneWeather = document.getElementById('dayOneWeather');
                                 dayOneWeather.innerHTML = dayOneD;
                             }
-
-
-
                             //day Two dataset
                             function getDayTwo() {
                                 let dayTwoEpoch = new Date(data.daily[2].dt * 1000);
-
-
                                 let dayTwoH = "Humidity: " + data.daily[2].humidity;
                                 let dayTwoT = "Temperature: " + data.daily[2].temp.day;
                                 let dayTwoW = "Wind Speed: " + data.daily[2].wind_speed;
                                 let dayTwoUV = "UV Index: " + data.daily[2].uvi;
 
-                                // let dayTwoUV = data.daily[4].uvi;
                                 let dayTwoU = parseInt(dayTwoUV);
                                 if (dayTwoU < 5) {
                                     document.getElementById("dayTwoUv").style.color = "green";
@@ -205,8 +139,6 @@ $(document).ready(function() {
                                     document.getElementById("dayTwoUv").style.color = "red";
 
                                 }
-                                //add color coding here to new element 
-
                                 let dayTwoD = data.daily[2].weather[0].description;
                                 let dayTwoI = data.daily[2].weather[0].icon;
 
@@ -243,8 +175,6 @@ $(document).ready(function() {
                             //day Three
                             function getDayThree() {
                                 let dayThreeEpoch = new Date(data.daily[3].dt * 1000);
-
-
                                 let dayThreeH = "Humidity: " + data.daily[3].humidity;
                                 let dayThreeT = "Temperature: " + data.daily[3].temp.day;
                                 let dayThreeW = "Wind Speed: " + data.daily[3].wind_speed;
@@ -255,8 +185,6 @@ $(document).ready(function() {
                                 } else {
                                     document.getElementById("dayThreeUv").style.color = "red";
                                 }
-                                //add color coding here to new element 
-
                                 let dayThreeD = data.daily[3].weather[0].description;
                                 let dayThreeI = data.daily[3].weather[0].icon;
 
@@ -268,12 +196,9 @@ $(document).ready(function() {
                                 let dayThreeWind = document.getElementById('dayThreeWind');
                                 dayThreeWind.innerHTML = dayThreeW;
 
-
                                 // displays uv
                                 let dayThreeUv = document.getElementById('dayThreeUv');
                                 dayThreeUv.innerHTML = "UV Index:" + dayThreeU;
-
-
 
                                 // displays date on top of card
                                 let dayThreeDate = document.getElementById('dayThreeDate');
@@ -288,8 +213,6 @@ $(document).ready(function() {
                                 dayThreeImg.src = 'https://openweathermap.org/img/wn/' + dayThreeI + '.png';
                                 document.getElementById('dayThreeIcon').appendChild(dayThreeImg);
 
-
-
                                 //displays the dayThreedata
                                 let dayThreeWeather = document.getElementById('dayThreeWeather');
                                 dayThreeWeather.innerHTML = dayThreeD;
@@ -299,14 +222,11 @@ $(document).ready(function() {
                             //day Four
                             function getDayFour() {
                                 let dayFourEpoch = new Date(data.daily[4].dt * 1000);
-
-
                                 let dayFourH = "Humidity: " + data.daily[4].humidity;
                                 let dayFourT = "Temperature: " + data.daily[4].temp.day;
                                 let dayFourW = "Wind Speed: " + data.daily[4].wind_speed;
                                 let dayFourUV = data.daily[4].uvi;
                                 let dayFourU = parseInt(dayFourUV);
-
                                 if (dayFourU < 5) {
                                     document.getElementById("dayFourUv").style.color = "green";
 
@@ -314,8 +234,6 @@ $(document).ready(function() {
                                     document.getElementById("dayFourUv").style.color = "red";
 
                                 }
-                                //add color coding here to new element 
-
                                 let dayFourD = data.daily[4].weather[0].description;
                                 let dayFourI = data.daily[4].weather[0].icon;
 
@@ -326,7 +244,6 @@ $(document).ready(function() {
                                 // displays wind
                                 let dayFourWind = document.getElementById('dayFourWind');
                                 dayFourWind.innerHTML = dayFourW;
-
 
                                 // displays uv
                                 let dayFourUv = document.getElementById('dayFourUv');
@@ -340,7 +257,6 @@ $(document).ready(function() {
                                 let dayFourTemp = document.getElementById('dayFourTemp');
                                 dayFourTemp.innerHTML = dayFourT;
 
-
                                 //displays icon
                                 let dayFourImg = document.createElement('img');
                                 dayFourImg.src = 'http://openweathermap.org/img/wn/' + dayFourI + '.png';
@@ -353,17 +269,11 @@ $(document).ready(function() {
 
                             //day Five dataset
                             function getDayFive() {
-
-
                                 let dayFiveEpoch = new Date(data.daily[5].dt * 1000);
-
-
                                 let dayFiveH = "Humidity: " + data.daily[5].humidity;
                                 let dayFiveT = "Temperature: " + data.daily[5].temp.day;
                                 let dayFiveW = "Wind Speed: " + data.daily[5].wind_speed;
                                 let dayFiveUV = data.daily[5].uvi;
-                                console.log(dayFiveUV);
-
                                 let dayFiveU = parseInt(dayFiveUV);
                                 console.log(dayFiveU);
                                 if (dayFiveU < 5) {
@@ -372,8 +282,6 @@ $(document).ready(function() {
                                     document.getElementById("dayFiveUv").style.color = "red";
 
                                 }
-                                //add color coding here to new element 
-
                                 let dayFiveD = data.daily[5].weather[0].description;
                                 let dayFiveI = data.daily[5].weather[0].icon;
 
@@ -384,7 +292,6 @@ $(document).ready(function() {
                                 // displays wind
                                 let dayFiveWind = document.getElementById('dayFiveWind');
                                 dayFiveWind.innerHTML = dayFiveW;
-
 
                                 // displays uv
                                 let dayFiveUv = document.getElementById('dayFiveUv');
@@ -406,32 +313,38 @@ $(document).ready(function() {
                                 //displays the dayFivedata
                                 let dayFiveWeather = document.getElementById('dayFiveWeather');
                                 dayFiveWeather.innerHTML = dayFiveD;
-
                             }
                             //call functions heres
-
                             getDayOne();
                             getDayTwo();
                             getDayThree();
                             getDayFour();
                             getDayFive();
                             localStorage.setItem('weatherData', getDayOne);
-                            document.getElementById('cityContainer').onclick = function() {
-                                alert("button was clicked");
-                                document.getElementById("clearData").innerHTML = "";
-                            };
+                            // document.getElementById('cityContainer').onclick = function() {
+                            //     alert("button was clicked");
+                            //     document.getElementById("clearData").innerHTML = "";
+                            // };
+                            //test reload section 
+                            // const reloadButton = document.querySelector("#submit");
+                            // // Reload everything:
+                            // function reload() {
+                            //     reload = location.reload();
+                            // }
+
+                            // // Event listeners for reload
+                            // reloadButton.addEventListener("click", clearIcon);
 
 
-
+                            // //onlcik event to clear the image html so it doesnt keep displaying all the before weather icons
+                            // // try next object.addEventListener("click", myScript);
+                            // function clearIcon() {
+                            //     document.getElementById("currentIcon").innerHTML = "";
+                            // };
                         }
-
-
                     });
-
                 }
             })
-
         }
-
     })
 })
