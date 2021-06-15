@@ -79,7 +79,7 @@ $(document).ready(function() {
                                 let dayOneH = "Humidity: " + data.daily[1].humidity;
                                 let dayOneT = "Temperature: " + data.daily[1].temp.day;
                                 let dayOneW = "Wind Speed: " + data.daily[1].wind_speed;
-                                let dayOneUV = "UV Index: " + data.daily[1].uvi;
+                                let dayOneUV = data.daily[1].uvi;
                                 let dayOneU = parseInt(dayOneUV);
                                 if (dayOneU < 5) {
                                     document.getElementById("dayOneUv").style.color = "green";
@@ -124,7 +124,7 @@ $(document).ready(function() {
                                 let dayTwoH = "Humidity: " + data.daily[2].humidity;
                                 let dayTwoT = "Temperature: " + data.daily[2].temp.day;
                                 let dayTwoW = "Wind Speed: " + data.daily[2].wind_speed;
-                                let dayTwoUV = "UV Index: " + data.daily[2].uvi;
+                                let dayTwoUV = data.daily[2].uvi;
                                 let dayTwoU = parseInt(dayTwoUV);
                                 if (dayTwoU < 5) {
                                     document.getElementById("dayTwoUv").style.color = "green";
@@ -169,13 +169,15 @@ $(document).ready(function() {
                                 let dayThreeH = "Humidity: " + data.daily[3].humidity;
                                 let dayThreeT = "Temperature: " + data.daily[3].temp.day;
                                 let dayThreeW = "Wind Speed: " + data.daily[3].wind_speed;
-                                let dayThreeUV = "UV Index: " + data.daily[3].uvi;
+                                let dayThreeUV = data.daily[3].uvi;
+                                console.log(dayThreeUV);
                                 let dayThreeU = parseInt(dayThreeUV);
                                 if (dayThreeU < 5) {
                                     document.getElementById("dayThreeUv").style.color = "green";
                                 } else {
                                     document.getElementById("dayThreeUv").style.color = "red";
                                 }
+                                console.log(dayThreeU);
                                 let dayThreeD = data.daily[3].weather[0].description;
                                 let dayThreeI = data.daily[3].weather[0].icon;
 
@@ -190,6 +192,7 @@ $(document).ready(function() {
                                 // displays uv
                                 let dayThreeUv = document.getElementById('dayThreeUv');
                                 dayThreeUv.innerHTML = "UV Index:" + dayThreeU;
+                                console.log(dayThreeUv);
 
                                 // displays date on top of card
                                 let dayThreeDate = document.getElementById('dayThreeDate');
@@ -222,6 +225,8 @@ $(document).ready(function() {
                                 } else {
                                     document.getElementById("dayFourUv").style.color = "red";
                                 }
+
+                                console.log(dayFourU);
                                 let dayFourD = data.daily[4].weather[0].description;
                                 let dayFourI = data.daily[4].weather[0].icon;
 
