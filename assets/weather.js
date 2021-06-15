@@ -3,31 +3,9 @@ $(document).ready(function() {
         let city = $("#searchCity").val();
         console.log(city)
 
-        function myFunction() {
-            let searchTerm = document.querySelector('#searchCity').value;
-            fetch(
-                    `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=imperial&APPID=81cbd7d0addf7aa0b0d00ff1784d04b2`
-                )
-                .then(function(response) {
-                    return response.json();
-                })
-                .then(function(response) {
-                    console.log(response.name);
-                    let cityName = response.name;
-                    // Create a iterable that will select the <div> where the city will be displayed
-                    let responseContainerEl = document.getElementById('cityContainer');
-                    let cityBtn = document.createElement("BUTTON");
-                    cityBtn.setAttribute('src', cityName);
-                    cityBtn.textContent = cityName;
-                    localStorage.setItem('city', JSON.stringify(cityName));
-                    let cityStor = localStorage.getItem('city');
-                    console.log('typeof cityStor: ' + typeof cityStor);
-                    cityBtn.className = "btn btn-secondary btn-lg btn-block"
-                        // Append to the button
-                    responseContainerEl.appendChild(cityBtn);
-                });
-        }
-        myFunction();
+
+
+
 
         //check field is not empty
         if (city != '') {
@@ -218,7 +196,6 @@ $(document).ready(function() {
                                 dayThreeWeather.innerHTML = dayThreeD;
                             }
 
-
                             //day Four
                             function getDayFour() {
                                 let dayFourEpoch = new Date(data.daily[4].dt * 1000);
@@ -321,26 +298,73 @@ $(document).ready(function() {
                             getDayFour();
                             getDayFive();
                             localStorage.setItem('weatherData', getDayOne);
-                            // document.getElementById('cityContainer').onclick = function() {
-                            //     alert("button was clicked");
-                            //     document.getElementById("clearData").innerHTML = "";
-                            // };
-                            //test reload section 
-                            // const reloadButton = document.querySelector("#submit");
-                            // // Reload everything:
-                            // function reload() {
-                            //     reload = location.reload();
-                            // }
-
-                            // // Event listeners for reload
-                            // reloadButton.addEventListener("click", clearIcon);
 
 
-                            // //onlcik event to clear the image html so it doesnt keep displaying all the before weather icons
-                            // // try next object.addEventListener("click", myScript);
-                            // function clearIcon() {
-                            //     document.getElementById("currentIcon").innerHTML = "";
-                            // };
+
+
+                            //city button function data
+                            function cityButtons() {
+                                let searchTerm = document.querySelector('#searchCity').value;
+                                fetch(
+                                        `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=imperial&APPID=81cbd7d0addf7aa0b0d00ff1784d04b2`
+                                    )
+                                    .then(function(response) {
+                                        return response.json();
+                                    })
+                                    .then(function(response) {
+                                        console.log(response.name);
+                                        let cityName = response.name;
+                                        // Create a iterable that will select the <div> where the city will be displayed
+                                        let responseContainerEl = document.getElementById('cityContainer');
+                                        let cityBtn = document.createElement("BUTTON");
+                                        cityBtn.setAttribute('src', cityName);
+                                        cityBtn.textContent = cityName;
+
+                                        //onclick city name will load data with no fetch request
+                                        cityBtn.onclick = function() {
+                                            //  get value of button
+                                            let oldCityName = cityBtn.innerHTML;
+                                            //clear icon data
+                                            let clearCurrent = document.getElementById("currentIcon");
+                                            clearCurrent.innerText = "";
+
+                                            let clearDayOne = document.getElementById("dayOneIcon");
+                                            clearDayOne.innerText = "";
+
+                                            let clearDayTwo = document.getElementById("dayTwoIcon");
+                                            clearDayTwo.innerText = "";
+
+                                            let clearDayThree = document.getElementById("dayThreeIcon");
+                                            clearDayThree.innerText = "";
+
+                                            let clearDayFour = document.getElementById("dayFourIcon");
+                                            clearDayFour.innerText = "";
+
+                                            let clearDayFive = document.getElementById("dayFiveIcon");
+                                            clearDayFive.innerText = "";
+
+                                            //use button value to generate that data dynamically
+                                            //call all dynamic data functions
+                                            console.log(oldCityName);
+                                            getCurrentDay();
+                                            getDayOne();
+                                            getDayTwo();
+                                            getDayThree();
+                                            getDayFour();
+                                            getDayFive();
+
+                                        };
+
+                                        localStorage.setItem('city', JSON.stringify(cityName));
+                                        let cityStor = localStorage.getItem('city');
+                                        console.log('typeof cityStor: ' + typeof cityStor);
+                                        cityBtn.className = "btn btn-secondary btn-lg btn-block"
+                                            // Append to the button
+                                        responseContainerEl.appendChild(cityBtn);
+                                    });
+                            }
+                            cityButtons();
+
                         }
                     });
                 }
