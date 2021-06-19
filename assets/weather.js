@@ -170,14 +170,12 @@ $(document).ready(function() {
                                 let dayThreeT = "Temperature: " + data.daily[3].temp.day;
                                 let dayThreeW = "Wind Speed: " + data.daily[3].wind_speed;
                                 let dayThreeUV = data.daily[3].uvi;
-                                console.log(dayThreeUV);
                                 let dayThreeU = parseInt(dayThreeUV);
                                 if (dayThreeU < 5) {
                                     document.getElementById("dayThreeUv").style.color = "green";
                                 } else {
                                     document.getElementById("dayThreeUv").style.color = "red";
                                 }
-                                console.log(dayThreeU);
                                 let dayThreeD = data.daily[3].weather[0].description;
                                 let dayThreeI = data.daily[3].weather[0].icon;
 
@@ -192,7 +190,6 @@ $(document).ready(function() {
                                 // displays uv
                                 let dayThreeUv = document.getElementById('dayThreeUv');
                                 dayThreeUv.innerHTML = "UV Index:" + dayThreeU;
-                                console.log(dayThreeUv);
 
                                 // displays date on top of card
                                 let dayThreeDate = document.getElementById('dayThreeDate');
@@ -225,8 +222,6 @@ $(document).ready(function() {
                                 } else {
                                     document.getElementById("dayFourUv").style.color = "red";
                                 }
-
-                                console.log(dayFourU);
                                 let dayFourD = data.daily[4].weather[0].description;
                                 let dayFourI = data.daily[4].weather[0].icon;
 
